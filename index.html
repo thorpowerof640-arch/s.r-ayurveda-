@@ -3,76 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S.R. Ayurveda - Pure Herbal & Ayurvedic Products</title>
+    <title>S.R. Ayurveda - Premium Ayurvedic & Herbal Supplements</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .badge-sale {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ef4444;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            z-index: 10;
+        }
+    </style>
 </head>
-<body class="bg-amber-50 font-sans text-gray-800">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <!-- Header / Navbar -->
-    <header class="bg-emerald-800 text-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-wide">S.R. Ayurveda</h1>
-            <nav class="hidden md:flex space-x-6 font-medium">
-                <a href="index.html" class="hover:text-amber-300">Home</a>
-                <a href="products.html" class="hover:text-amber-300">Products</a>
-                <a href="about.html" class="hover:text-amber-300">About Us</a>
-                <a href="contact.html" class="hover:text-amber-300">Contact Us</a>
-            </nav>
-            <a href="products.html" class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-4 py-2 rounded-lg font-bold">Shop Now</a>
+    <!-- Top Announcement Bar -->
+    <div class="bg-emerald-900 text-amber-300 text-xs py-2 text-center font-medium tracking-wide">
+        ⚡ Heavy Discounts Available! 100% Ayurvedic & GMP Certified Products | Fast Shipping Across India ⚡
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-emerald-800 text-white flex items-center justify-center rounded-full font-bold text-xl">SR</div>
+                <div>
+                    <span class="text-2xl font-extrabold text-emerald-900 tracking-tight">S.R. Ayurveda</span>
+                    <span class="block text-xs text-amber-700 font-semibold tracking-widest -mt-1">S.R.ayurveda.com</span>
+                </div>
+            </a>
+
+            <!-- Search Bar (Nutrashop Style) -->
+            <div class="hidden md:flex flex-1 max-w-md mx-8">
+                <div class="relative w-full">
+                    <input type="text" placeholder="Search for products, categories, health issues..." class="w-full bg-gray-100 border border-gray-300 rounded-full py-2 pl-4 pr-10 text-sm focus:outline-none focus:border-emerald-700">
+                    <button class="absolute right-3 top-2.5 text-gray-500 hover:text-emerald-800">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Links & Icons -->
+            <div class="flex items-center space-x-6">
+                <nav class="hidden lg:flex space-x-6 text-sm font-semibold text-gray-700">
+                    <a href="#home" class="hover:text-emerald-800">Home</a>
+                    <a href="#categories" class="hover:text-emerald-800">Categories</a>
+                    <a href="#products" class="hover:text-emerald-800">Products</a>
+                    <a href="#blogs" class="hover:text-emerald-800">Blogs</a>
+                    <a href="#about" class="hover:text-emerald-800">About Us</a>
+                    <a href="#faq" class="hover:text-emerald-800">FAQ's</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-gray-700 hover:text-emerald-800 text-lg"><i class="fa-regular fa-user"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-emerald-800 text-lg relative">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">0</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-emerald-700 text-white py-20 text-center px-4">
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Prakriti Ka Anupam Uphaar - S.R. Ayurveda</h2>
-        <p class="text-lg max-w-2xl mx-auto mb-6">100% Shuddh aur Ayurvedic Aushadhiyan aapke ache swasthya ke liye.</p>
-        <a href="products.html" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-6 py-3 rounded-full text-lg">Explore Products</a>
+    <!-- Hero Banner Section -->
+    <section id="home" class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-950 text-white py-16 md:py-24 relative overflow-hidden">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <span class="bg-amber-500 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">100% Pure & Herbal</span>
+                <h1 class="text-3xl md:text-5xl font-black leading-tight">Unleash Your Natural Health & Vitality</h1>
+                <p class="text-gray-200 text-base md:text-lg">Discover authentic Ayurvedic formulations made with premium natural herbs for strength, immunity, diabetes care, joint pain relief, and holistic wellness.</p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#products" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold px-8 py-3.5 rounded-lg text-base shadow-lg transition">Shop Bestsellers</a>
+                    <a href="#categories" class="bg-transparent border-2 border-white hover:bg-white hover:text-emerald-900 text-white font-bold px-8 py-3.5 rounded-lg text-base transition">Explore Categories</a>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="w-72 h-72 md:w-96 md:h-96 bg-emerald-700/50 rounded-full flex items-center justify-center border-4 border-amber-400/30 p-4 backdrop-blur-sm">
+                    <div class="text-center p-6 bg-emerald-950/80 rounded-2xl border border-emerald-600">
+                        <i class="fa-solid fa-leaf text-amber-400 text-5xl mb-3"></i>
+                        <h3 class="text-xl font-bold">100% Herbal & Authentic</h3>
+                        <p class="text-xs text-gray-300 mt-2">Certified Pure Ingredients • No Harmful Chemicals • GMP Approved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="container mx-auto px-4 py-12">
-        <h3 class="text-3xl font-bold text-center text-emerald-900 mb-8">Hamare Lokpriya Products</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Categories Section (Nutrashop Style) -->
+    <section id="categories" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-900">Explore Health Categories</h2>
+                <p class="text-gray-600 text-sm mt-2">Targeted Ayurvedic solutions tailored to your body's specific health needs.</p>
+            </div>
             
-            <!-- Card 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden p-4 border text-center">
-                <div class="h-48 bg-gray-200 rounded-md mb-4 flex items-center justify-center text-gray-500">
-                    [Product Image]
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+                <!-- Cat 1 -->
+                <div class="border border-gray-200 rounded-xl p-5 text-center hover:border-emerald-600 hover:shadow-md transition cursor-pointer bg-amber-50/50">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                        <i class="fa-solid fa-mars"></i>
+                    </div>
+                    <h3 class="font-bold text-sm text-gray-800">Male Wellness</h3>
+                    <p class="text-xs text-gray-500 mt-1">Stamina & Strength</p>
                 </div>
-                <h4 class="text-xl font-bold text-emerald-800">Ashwagandha Churna</h4>
-                <p class="text-sm text-gray-600 mt-2">Tanaav kam karne aur shakti badhane ke liye shreshth.</p>
-                <p class="text-lg font-bold text-amber-600 mt-2">₹299</p>
-                <a href="product-detail.html" class="mt-4 inline-block bg-emerald-800 text-white px-4 py-2 rounded hover:bg-emerald-900">Details Dekhein</a>
+                <!-- Cat 2 -->
+                <div class="border border-gray-200 rounded-xl p-5 text-center hover:border-emerald-600 hover:shadow-md transition cursor-pointer bg-amber-50/50">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                        <i class="fa-solid fa-weight-scale"></i>
+                    </div>
+                    <h3 class="font-bold text-sm text-gray-800">Weight Maintenance</h3>
+                    <p class="text-xs text-gray-500 mt-1">Fat Loss & Fitness</p>
+                </div>
+                <!-- Cat 3 -->
+                <div class="border border-gray-200 rounded-xl p-5 text-center hover:border-emerald-600 hover:shadow-md transition cursor-pointer bg-amber-50/50">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <h3 class="font-bold text-sm text-gray-800">Diabetes Care</h3>
+                    <p class="text-xs text-gray-500 mt-1">Blood Sugar Control</p>
+                </div>
+                <!-- Cat 4 -->
+                <div class="border border-gray-200 rounded-xl p-5 text-center hover:border-emerald-600 hover:shadow-md transition cursor-pointer bg-amber-50/50">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="font-bold text-sm text-gray-800">Cardio Health</h3>
+                    <p class="text-xs text-gray-500 mt-1">Heart & Cholesterol</p>
+                </div>
+                <!-- Cat 5 -->
+                <div class="border border-gray-200 rounded-xl p-5 text-center hover:border-emerald-600 hover:shadow-md transition cursor-pointer bg-amber-50/50 col-span-2 md:col-span-1">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                        <i class="fa-solid fa-bone"></i>
+                    </div>
+                    <h3 class="font-bold text-sm text-gray-800">Joint Pain Care</h3>
+                    <p class="text-xs text-gray-500 mt-1">Flexibility & Relief</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Selling Products Grid -->
+    <section id="products" class="py-14 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-900">Best Selling Products</h2>
+                    <p class="text-gray-600 text-sm mt-1">Discover our most popular, customer-loved Ayurvedic nutrition essentials.</p>
+                </div>
+                <a href="#" class="mt-4 md:mt-0 text-emerald-800 font-bold hover:underline text-sm flex items-center gap-1">View All Products <i class="fa-solid fa-arrow-right text-xs"></i></a>
             </div>
 
-            <!-- Card 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden p-4 border text-center">
-                <div class="h-48 bg-gray-200 rounded-md mb-4 flex items-center justify-center text-gray-500">
-                    [Product Image]
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col">
+                    <span class="badge-sale">Sale</span>
+                    <div class="h-56 bg-emerald-50 flex items-center justify-center relative p-4">
+                        <i class="fa-solid fa-mortar-pestle text-6xl text-emerald-700/40"></i>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-emerald-700 font-bold uppercase tracking-wider">Weight Management</span>
+                            <h3 class="font-bold text-gray-900 text-base mt-1">Green Coffee Bean Extract</h3>
+                            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Natural weight loss booster with antioxidants to boost metabolism.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs text-gray-400 line-through">Rs. 3,380.00</span>
+                                <span class="text-lg font-extrabold text-emerald-900">Rs. 1,690.00</span>
+                            </div>
+                            <button class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                        </div>
+                    </div>
                 </div>
-                <h4 class="text-xl font-bold text-emerald-800">Shilajit Gold Capsule</h4>
-                <p class="text-sm text-gray-600 mt-2">Stamina aur immunity booster formulation.</p>
-                <p class="text-lg font-bold text-amber-600 mt-2">₹799</p>
-                <a href="product-detail.html" class="mt-4 inline-block bg-emerald-800 text-white px-4 py-2 rounded hover:bg-emerald-900">Details Dekhein</a>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col">
+                    <span class="badge-sale">Sale</span>
+                    <div class="h-56 bg-emerald-50 flex items-center justify-center relative p-4">
+                        <i class="fa-solid fa-vial text-6xl text-emerald-700/40"></i>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-emerald-700 font-bold uppercase tracking-wider">Joint Pain Care</span>
+                            <h3 class="font-bold text-gray-900 text-base mt-1">FLEX COMFORT GEL</h3>
+                            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Herbal joint pain relief gel for fast recovery and arthritis care.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs text-gray-400 line-through">Rs. 4,980.00</span>
+                                <span class="text-lg font-extrabold text-emerald-900">Rs. 2,490.00</span>
+                            </div>
+                            <button class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col">
+                    <span class="badge-sale">Sale</span>
+                    <div class="h-56 bg-emerald-50 flex items-center justify-center relative p-4">
+                        <i class="fa-solid fa-capsules text-6xl text-emerald-700/40"></i>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-emerald-700 font-bold uppercase tracking-wider">Male Wellness</span>
+                            <h3 class="font-bold text-gray-900 text-base mt-1">XTRA MAN CAPSULES</h3>
+                            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Natural stamina, energy and testosterone booster formulation.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs text-gray-400 line-through">Rs. 4,500.00</span>
+                                <span class="text-lg font-extrabold text-emerald-900">Rs. 2,250.00</span>
+                            </div>
+                            <button class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col">
+                    <span class="badge-sale">Sale</span>
+                    <div class="h-56 bg-emerald-50 flex items-center justify-center relative p-4">
+                        <i class="fa-solid fa-pills text-6xl text-emerald-700/40"></i>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-emerald-700 font-bold uppercase tracking-wider">Male Wellness</span>
+                            <h3 class="font-bold text-gray-900 text-base mt-1">KOHINOOR ADVANCE PLUS</h3>
+                            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Premium Gold Shilajit & Ashwagandha capsule formulation.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs text-gray-400 line-through">Rs. 4,500.00</span>
+                                <span class="text-lg font-extrabold text-emerald-900">Rs. 2,250.00</span>
+                            </div>
+                            <button class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Single Product Spotlight Section -->
+    <section class="py-16 bg-white border-y border-gray-200">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div class="bg-amber-50/60 rounded-2xl p-8 border border-amber-200 text-center relative">
+                <span class="bg-emerald-800 text-white text-xs font-bold px-3 py-1 rounded-full absolute top-4 left-4">Spotlight Offer</span>
+                <div class="h-72 flex items-center justify-center">
+                    <i class="fa-solid fa-prescription-bottle-medical text-9xl text-emerald-800/80"></i>
+                </div>
+            </div>
+            <div class="space-y-5">
+                <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest">Featured Medicine Spotlight</span>
+                <h2 class="text-3xl font-extrabold text-gray-900">Kohinoor Advance Plus Capsule</h2>
+                <div class="flex items-center gap-3">
+                    <span class="text-xs text-gray-400 line-through text-lg">Rs. 4,500.00</span>
+                    <span class="text-2xl font-black text-emerald-900">Rs. 2,250.00</span>
+                    <span class="text-xs bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded">SAVE 50%</span>
+                </div>
+                <p class="text-xs text-gray-500">Taxes included. Free shipping available on prepaid orders.</p>
+
+                <!-- Detailed Medicine Specs -->
+                <div class="border-t border-b border-gray-100 py-4 space-y-3">
+                    <div>
+                        <h4 class="text-xs font-bold text-emerald-900 uppercase">Key Ingredients:</h4>
+                        <p class="text-xs text-gray-600 mt-0.5">Shilajit, Gold Bhasma, Safed Musli, Ashwagandha, Gokshura, Kaunch Beej.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-emerald-900 uppercase">Dosage & Usage:</h4>
+                        <p class="text-xs text-gray-600 mt-0.5">1 capsule twice daily with lukewarm milk or water after meals.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="flex border border-gray-300 rounded-lg overflow-hidden">
+                        <button class="px-3 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 font-bold">-</button>
+                        <input type="text" value="1" class="w-12 text-center text-sm font-bold border-x border-gray-300 focus:outline-none">
+                        <button class="px-3 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 font-bold">+</button>
+                    </div>
+                    <button class="flex-1 bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 rounded-lg text-sm shadow transition">Add to Cart</button>
+                    <button class="flex-1 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold py-3 rounded-lg text-sm shadow transition">Buy It Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose S.R. Ayurveda -->
+    <section class="py-16 bg-emerald-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-amber-300">Why Choose S.R. Ayurveda Supplements?</h2>
+                <p class="text-gray-200 text-sm mt-2">Discover why thousands trust S.R. Ayurveda for their everyday health & wellness.</p>
             </div>
 
-            <!-- Card 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden p-4 border text-center">
-                <div class="h-48 bg-gray-200 rounded-md mb-4 flex items-center justify-center text-gray-500">
-                    [Product Image]
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-emerald-800/60 p-6 rounded-xl border border-emerald-700">
+                    <div class="w-12 h-12 bg-amber-500 text-emerald-950 rounded-lg flex items-center justify-center font-bold text-xl mb-4">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Natural Ingredients</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">Made strictly from 100% natural herbs and classical Ayurvedic formulations with zero synthetic chemical additives.</p>
                 </div>
-                <h4 class="text-xl font-bold text-emerald-800">Triphala Juice</h4>
-                <p class="text-sm text-gray-600 mt-2">Paachan kriya aur pet ki safai ke liye uttam.</p>
-                <p class="text-lg font-bold text-amber-600 mt-2">₹199</p>
-                <a href="product-detail.html" class="mt-4 inline-block bg-emerald-800 text-white px-4 py-2 rounded hover:bg-emerald-900">Details Dekhein</a>
+
+                <div class="bg-emerald-800/60 p-6 rounded-xl border border-emerald-700">
+                    <div class="w-12 h-12 bg-amber-500 text-emerald-950 rounded-lg flex items-center justify-center font-bold text-xl mb-4">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Holistic Benefits</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">Provides total body balance, supporting digestion, immunity, stamina, and mental relaxation at root levels.</p>
+                </div>
+
+                <div class="bg-emerald-800/60 p-6 rounded-xl border border-emerald-700">
+                    <div class="w-12 h-12 bg-amber-500 text-emerald-950 rounded-lg flex items-center justify-center font-bold text-xl mb-4">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">GMP Certified Safe</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">Manufactured under strict ISO & GMP certified laboratory standards ensuring highest potency and zero side-effects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Blog Posts Section -->
+    <section id="blogs" class="py-14 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-900">Latest Ayurvedic Blog Posts</h2>
+                <p class="text-gray-600 text-sm mt-1">Read expert tips and natural health remedies based on authentic Ayurvedic wisdom.</p>
             </div>
 
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Blog 1 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition">
+                    <div class="h-44 bg-amber-100 flex items-center justify-center text-emerald-800">
+                        <i class="fa-solid fa-book-open text-5xl"></i>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-amber-600 uppercase">Diabetes Care</span>
+                        <h3 class="font-bold text-gray-900 text-base mt-1 hover:text-emerald-800 transition">मधुमेह (Diabetes) और उसके घरेलू एवं प्राकृतिक उपचार!</h3>
+                        <p class="text-xs text-gray-600 mt-2 line-clamp-3">आयुर्वेदिक दृष्टिकोण मधुमेह को केवल रक्त शर्करा नियंत्रण तक सीमित न रखकर पूरे शरीर के संतुलन पर जोर देता है...</p>
+                        <a href="#" class="inline-block mt-4 text-xs font-bold text-emerald-800 hover:underline">Read Full Article →</a>
+                    </div>
+                </div>
+
+                <!-- Blog 2 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition">
+                    <div class="h-44 bg-amber-100 flex items-center justify-center text-emerald-800">
+                        <i class="fa-solid fa-notes-medical text-5xl"></i>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-amber-600 uppercase">Joint Health</span>
+                        <h3 class="font-bold text-gray-900 text-base mt-1 hover:text-emerald-800 transition">जोड़ों के दर्द (Joint Pain) से राहत पाने के आयुर्वेदिक उपाय</h3>
+                        <p class="text-xs text-gray-600 mt-2 line-clamp-3">वात दोष के असंतुलन से होने वाले जोड़ों के दर्द को दूर करने के लिए विशेष तेल मालिश और जड़ी-बूटियों का प्रयोग...</p>
+                        <a href="#" class="inline-block mt-4 text-xs font-bold text-emerald-800 hover:underline">Read Full Article →</a>
+                    </div>
+                </div>
+
+                <!-- Blog 3 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition">
+                    <div class="h-44 bg-amber-100 flex items-center justify-center text-emerald-800">
+                        <i class="fa-solid fa-heart-pulse text-5xl"></i>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-amber-600 uppercase">Immunity</span>
+                        <h3 class="font-bold text-gray-900 text-base mt-1 hover:text-emerald-800 transition">स्टैमिना और इम्यूनिटी बढ़ाने में अश्वगंधा और शिलाजीत का महत्व</h3>
+                        <p class="text-xs text-gray-600 mt-2 line-clamp-3">प्राकृतिक रूप से शरीर को ऊर्जावान और मजबूत रखने के लिए आयुर्वेद में अश्वगंधा और शिलाजीत को सर्वोत्तम माना गया है...</p>
+                        <a href="#" class="inline-block mt-4 text-xs font-bold text-emerald-800 hover:underline">Read Full Article →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-14 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-900">Frequently Asked Questions</h2>
+                <p class="text-gray-600 text-sm mt-1">Get answers to common queries about S.R. Ayurveda products.</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-sm text-gray-900">What is S.R. Ayurveda?</h3>
+                    <p class="text-xs text-gray-600 mt-2">S.R. Ayurveda (S.R.ayurveda.com) is a trusted store offering 100% natural and authentic Ayurvedic supplements for various health and fitness needs.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-sm text-gray-900">Are S.R. Ayurveda products safe?</h3>
+                    <p class="text-xs text-gray-600 mt-2">Yes, all S.R. Ayurveda products are manufactured in India following strict GMP certified practices with pure herbal extracts ensuring complete safety.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-sm text-gray-900">Where does S.R. Ayurveda ship to?</h3>
+                    <p class="text-xs text-gray-600 mt-2">We deliver across all pin codes in India with reliable door-to-door courier services.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-sm text-gray-900">What is the return & refund policy?</h3>
+                    <p class="text-xs text-gray-600 mt-2">We offer hassle-free replacement or refund if the product is delivered damaged or if a wrong item is received.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-emerald-900 text-white py-6 mt-12 text-center">
-        <p>&copy; 2026 S.R. Ayurveda (S.R.ayurveda.com). All Rights Reserved.</p>
+    <footer class="bg-emerald-950 text-gray-300 py-12 border-t border-emerald-900">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-amber-500 text-emerald-950 font-bold flex items-center justify-center rounded-full">SR</div>
+                    <span class="text-xl font-bold text-white">S.R. Ayurveda</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">S.R. Ayurveda Go India Pvt. Ltd.<br>Pure Ayurvedic formulations for a healthier, stronger lifestyle.</p>
+                <div class="flex space-x-4 text-amber-400 text-lg">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#about" class="hover:text-amber-300">About Us</a></li>
+                    <li><a href="#contact" class="hover:text-amber-300">Contact Us</a></li>
+                    <li><a href="#faq" class="hover:text-amber-300">FAQ's</a></li>
+                    <li><a href="#blogs" class="hover:text-amber-300">Blogs</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4">Customer Policies</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-amber-300">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-amber-300">Return & Refund Policy</a></li>
+                    <li><a href="#" class="hover:text-amber-300">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-amber-300">Track Orders</a></li>
+                </ul>
+            </div>
+
+            <div id="contact">
+                <h4 class="text-white font-bold text-sm mb-4">Get In Touch</h4>
+                <p class="text-xs text-gray-400 mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i>S.R. Ayurveda Head Office, New Delhi, India</p>
+                <p class="text-xs text-gray-400 mb-2"><i class="fa-solid fa-envelope text-amber-400 mr-2"></i>support@S.R.ayurveda.com</p>
+                <p class="text-xs text-gray-400"><i class="fa-solid fa-phone text-amber-400 mr-2"></i>+91 98765 43210</p>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 mt-10 pt-6 border-t border-emerald-900 text-center text-xs text-gray-500">
+            © 2026 S.R. Ayurveda (S.R.ayurveda.com). All Rights Reserved. Powered by S.R. Ayurveda Go India Pvt. Ltd.
+        </div>
     </footer>
 
 </body>
