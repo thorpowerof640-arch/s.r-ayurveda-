@@ -21,22 +21,13 @@
             border-radius: 4px;
             z-index: 10;
         }
-        /* Cart Toast Animation */
-        #cart-toast {
-            transition: all 0.3s ease-in-out;
+        /* Cart Drawer Animation */
+        #cart-drawer {
+            transition: transform 0.3s ease-in-out;
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
-
-    <!-- Cart Notification Pop-up -->
-    <div id="cart-toast" class="fixed bottom-5 right-5 bg-emerald-800 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 z-50 hidden opacity-0 translate-y-5">
-        <i class="fa-solid fa-circle-check text-amber-400 text-xl"></i>
-        <div>
-            <h4 class="font-bold text-sm">Product Added!</h4>
-            <p class="text-xs text-gray-200">Item cart me add ho gaya hai.</p>
-        </div>
-    </div>
 
     <!-- Top Announcement Bar -->
     <div class="bg-emerald-900 text-amber-300 text-xs py-2 text-center font-medium tracking-wide">
@@ -44,7 +35,7 @@
     </div>
 
     <!-- Main Navigation Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+    <header class="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-100">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="index.html" class="flex items-center space-x-2">
@@ -77,14 +68,52 @@
                 </nav>
                 <div class="flex items-center space-x-4">
                     <a href="#" class="text-gray-700 hover:text-emerald-800 text-lg"><i class="fa-regular fa-user"></i></a>
-                    <a href="#" class="text-gray-700 hover:text-emerald-800 text-lg relative">
+                    
+                    <!-- CART BUCKET ICON (Click karne par bucket khulega) -->
+                    <button onclick="toggleCart()" class="text-gray-700 hover:text-emerald-800 text-lg relative focus:outline-none">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span id="cart-count" class="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">0</span>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- SHOPPING CART BUCKET (SLIDING DRAWER) -->
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 z-50 hidden opacity-0 transition-opacity"></div>
+    
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full flex flex-col">
+        <!-- Cart Header -->
+        <div class="p-4 bg-emerald-900 text-white flex justify-between items-center">
+            <h3 class="font-bold text-lg flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-amber-400"></i> Your Order Bucket
+            </h3>
+            <button onclick="toggleCart()" class="text-gray-300 hover:text-white text-xl font-bold p-1">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4">
+            <div id="empty-cart-msg" class="text-center py-12 text-gray-500">
+                <i class="fa-solid fa-cart-flatbed text-5xl mb-3 text-gray-300"></i>
+                <p class="text-sm font-semibold">Your bucket is empty!</p>
+                <p class="text-xs text-gray-400 mt-1">Add products to place an order.</p>
+            </div>
+        </div>
+
+        <!-- Cart Footer & Checkout Button -->
+        <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
+            <div class="flex justify-between text-sm font-semibold text-gray-700">
+                <span>Total Amount:</span>
+                <span id="cart-subtotal" class="text-emerald-900 font-bold text-base">Rs. 0.00</span>
+            </div>
+            <p class="text-xs text-gray-500">Taxes included. Free shipping across India.</p>
+            <button onclick="proceedToCheckout()" class="w-full bg-amber-500 hover:bg-amber-600 text-emerald-950 font-extrabold py-3 rounded-lg shadow-md transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-lock"></i> Proceed to Checkout
+            </button>
+        </div>
+    </div>
 
     <!-- Hero Banner Section -->
     <section id="home" class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-950 text-white py-16 md:py-24 relative overflow-hidden">
@@ -156,7 +185,7 @@
                     <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-900">Best Selling Products</h2>
                     <p class="text-gray-600 text-sm mt-1">Discover our most popular, customer-loved Ayurvedic nutrition essentials.</p>
                 </div>
-                <a href="products.html" class="mt-4 md:mt-0 text-emerald-800 font-bold hover:underline text-sm flex items-center gap-1">View All Products <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                <a href="#products" class="mt-4 md:mt-0 text-emerald-800 font-bold hover:underline text-sm flex items-center gap-1">View All Products <i class="fa-solid fa-arrow-right text-xs"></i></a>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -177,7 +206,7 @@
                                 <span class="text-xs text-gray-400 line-through">Rs. 3,380.00</span>
                                 <span class="text-lg font-extrabold text-emerald-900">Rs. 1,690.00</span>
                             </div>
-                            <button onclick="addToCart(1)" class="add-to-cart-btn w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                            <button onclick="addToCart(1, 'Green Coffee Bean Extract', 1690)" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -199,7 +228,7 @@
                                 <span class="text-xs text-gray-400 line-through">Rs. 4,980.00</span>
                                 <span class="text-lg font-extrabold text-emerald-900">Rs. 2,490.00</span>
                             </div>
-                            <button onclick="addToCart(1)" class="add-to-cart-btn w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                            <button onclick="addToCart(2, 'FLEX COMFORT GEL', 2490)" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -221,7 +250,7 @@
                                 <span class="text-xs text-gray-400 line-through">Rs. 4,500.00</span>
                                 <span class="text-lg font-extrabold text-emerald-900">Rs. 2,250.00</span>
                             </div>
-                            <button onclick="addToCart(1)" class="add-to-cart-btn w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                            <button onclick="addToCart(3, 'POWER OF THOR CAPSULES', 2250)" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -243,7 +272,7 @@
                                 <span class="text-xs text-gray-400 line-through">Rs. 4,500.00</span>
                                 <span class="text-lg font-extrabold text-emerald-900">Rs. 2,250.00</span>
                             </div>
-                            <button onclick="addToCart(1)" class="add-to-cart-btn w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                            <button onclick="addToCart(4, 'POWER OF THOR RED CAPSULE', 2250)" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -289,8 +318,8 @@
                         <input type="text" id="product-qty" value="1" readonly class="w-12 text-center text-sm font-bold border-x border-gray-300 focus:outline-none bg-white">
                         <button onclick="increaseQty()" class="px-3 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 font-bold select-none">+</button>
                     </div>
-                    <button onclick="addSelectedQtyToCart()" class="flex-1 bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 rounded-lg text-sm shadow transition">Add to Cart</button>
-                    <button onclick="buyNow()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold py-3 rounded-lg text-sm shadow transition">Buy It Now</button>
+                    <button onclick="addSpotlightToCart()" class="flex-1 bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 rounded-lg text-sm shadow transition">Add to Cart</button>
+                    <button onclick="buyNowSpotlight()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold py-3 rounded-lg text-sm shadow transition">Buy It Now</button>
                 </div>
             </div>
         </div>
@@ -442,55 +471,124 @@
         </div>
     </footer>
 
-    <!-- JavaScript Logic for Cart and Quantity -->
+    <!-- CART JAVASCRIPT -->
     <script>
-        let cartTotal = 0;
+        let cart = [];
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function addToCart(id, name, price, qty = 1) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.qty += qty;
+            } else {
+                cart.push({ id, name, price, qty });
+            }
+            
+            updateCartUI();
+            toggleCart();
+        }
+
+        function addSpotlightToCart() {
+            const qtyInput = document.getElementById('product-qty');
+            const qty = parseInt(qtyInput.value) || 1;
+            addToCart(5, 'Power of thor Plus Capsule', 2250, qty);
+        }
+
+        function buyNowSpotlight() {
+            addSpotlightToCart();
+        }
+
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cart-items');
+            const cartCountBadge = document.getElementById('cart-count');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+
+            let totalItems = 0;
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <div id="empty-cart-msg" class="text-center py-12 text-gray-500">
+                        <i class="fa-solid fa-cart-flatbed text-5xl mb-3 text-gray-300"></i>
+                        <p class="text-sm font-semibold">Your bucket is empty!</p>
+                        <p class="text-xs text-gray-400 mt-1">Add products to place an order.</p>
+                    </div>`;
+            } else {
+                cartContainer.innerHTML = '';
+                cart.forEach(item => {
+                    totalItems += item.qty;
+                    subtotal += item.price * item.qty;
+
+                    cartContainer.innerHTML += `
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="flex-1 pr-2">
+                                <h4 class="font-bold text-xs text-gray-900">${item.name}</h4>
+                                <p class="text-xs font-semibold text-emerald-800 mt-0.5">Rs. ${item.price.toLocaleString('en-IN')}</p>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <button onclick="changeCartQty(${item.id}, -1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded text-xs font-bold">-</button>
+                                    <span class="text-xs font-bold px-1">${item.qty}</span>
+                                    <button onclick="changeCartQty(${item.id}, 1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded text-xs font-bold">+</button>
+                                </div>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-sm p-1">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>`;
+                });
+            }
+
+            cartCountBadge.innerText = totalItems;
+            cartSubtotal.innerText = `Rs. ${subtotal.toLocaleString('en-IN')}.00`;
+        }
+
+        function changeCartQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
 
         function increaseQty() {
             const qtyInput = document.getElementById('product-qty');
-            let currentVal = parseInt(qtyInput.value) || 1;
-            qtyInput.value = currentVal + 1;
+            qtyInput.value = (parseInt(qtyInput.value) || 1) + 1;
         }
 
         function decreaseQty() {
             const qtyInput = document.getElementById('product-qty');
-            let currentVal = parseInt(qtyInput.value) || 1;
-            if (currentVal > 1) {
-                qtyInput.value = currentVal - 1;
+            let val = parseInt(qtyInput.value) || 1;
+            if (val > 1) qtyInput.value = val - 1;
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Aapka bucket khali hai! Pehle koi product add karein.');
+                return;
             }
-        }
-
-        function addToCart(amount = 1) {
-            cartTotal += amount;
-            document.getElementById('cart-count').innerText = cartTotal;
-            showToast();
-        }
-
-        function addSelectedQtyToCart() {
-            const qtyInput = document.getElementById('product-qty');
-            const qty = parseInt(qtyInput.value) || 1;
-            addToCart(qty);
-        }
-
-        function buyNow() {
-            const qtyInput = document.getElementById('product-qty');
-            const qty = parseInt(qtyInput.value) || 1;
-            alert(`Proceeding to checkout with ${qty} item(s)!`);
-        }
-
-        function showToast() {
-            const toast = document.getElementById('cart-toast');
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.remove('opacity-0', 'translate-y-5');
-            }, 10);
-
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-5');
-                setTimeout(() => {
-                    toast.classList.add('hidden');
-                }, 300);
-            }, 2500);
+            alert('Aapka order process ho raha hai!');
         }
     </script>
 </body>
