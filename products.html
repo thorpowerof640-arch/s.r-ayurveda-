@@ -3,67 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products - S.R. Ayurveda</title>
+    <title>All Ayurvedic Products - S.R. Ayurveda</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-amber-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <header class="bg-emerald-800 text-white shadow-md">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">S.R. Ayurveda</h1>
-            <nav class="hidden md:flex space-x-6">
-                <a href="index.html" class="hover:text-amber-300">Home</a>
-                <a href="products.html" class="text-amber-300 font-bold">Products</a>
-                <a href="about.html" class="hover:text-amber-300">About Us</a>
-                <a href="contact.html" class="hover:text-amber-300">Contact Us</a>
-            </nav>
+    <!-- Top Announcement Bar -->
+    <div class="bg-emerald-900 text-amber-300 text-xs py-2 text-center font-medium tracking-wide">
+        ⚡ 100% Pure & Authentic Ayurvedic Formulations | Free Shipping Across India ⚡
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-emerald-800 text-white flex items-center justify-center rounded-full font-bold text-xl">SR</div>
+                <div>
+                    <span class="text-2xl font-extrabold text-emerald-900 tracking-tight">S.R. Ayurveda</span>
+                    <span class="block text-xs text-amber-700 font-semibold tracking-widest -mt-1">S.R.ayurveda.com</span>
+                </div>
+            </a>
+
+            <!-- Navigation & Back Button -->
+            <div class="flex items-center space-x-6">
+                <nav class="hidden lg:flex space-x-6 text-sm font-semibold text-gray-700">
+                    <a href="index.html#home" class="hover:text-emerald-800">Home</a>
+                    <a href="index.html#categories" class="hover:text-emerald-800">Categories</a>
+                    <a href="products.html" class="text-emerald-800 font-bold">Products</a>
+                    <a href="index.html#blogs" class="hover:text-emerald-800">Blogs</a>
+                    <a href="about.html" class="hover:text-emerald-800">About Us</a>
+                </nav>
+
+                <!-- BACK TO HOME BUTTON -->
+                <a href="index.html" class="bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-2 px-4 rounded-full flex items-center gap-2 transition shadow-sm">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
         </div>
     </header>
 
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-3xl font-bold text-emerald-900 mb-6">Hamare Ayurvedic Products</h2>
+    <!-- PAGE TITLE SECTION -->
+    <section class="bg-emerald-950 text-white py-10 border-b border-emerald-900">
+        <div class="container mx-auto px-4 text-center">
+            <span class="bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Natural Healing</span>
+            <h1 class="text-3xl md:text-4xl font-extrabold mt-3 text-white">हमारे प्रमाणित आयुर्वेदिक उत्पाद</h1>
+            <p class="text-gray-300 text-xs md:text-sm mt-2 max-max-w-xl mx-auto">100% प्राकृतिक जड़ी-बूटियों से निर्मित शुद्ध आयुर्वेदिक दवाएं एवं वेलनेस प्रोडक्ट्स</p>
+        </div>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <!-- Sidebar / Filter -->
-            <div class="bg-white p-4 rounded shadow">
-                <h3 class="font-bold text-lg mb-3">Categories</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-emerald-700 font-semibold">Sabhi Products</a></li>
-                    <li><a href="#" class="hover:text-emerald-700">Churna & Kwath</a></li>
-                    <li><a href="#" class="hover:text-emerald-700">Capsules & Tablets</a></li>
-                    <li><a href="#" class="hover:text-emerald-700">Juices & Syrups</a></li>
-                    <li><a href="#" class="hover:text-emerald-700">Skin & Hair Care</a></li>
+    <!-- PRODUCTS GRID SECTION -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            
+            <!-- Breadcrumb Navigation -->
+            <div class="flex justify-between items-center mb-8">
+                <nav class="text-xs text-gray-500">
+                    <a href="index.html" class="hover:text-emerald-800">Home</a> &gt; 
+                    <span class="text-gray-800 font-semibold">Our Products</span>
+                </nav>
+                <span class="text-xs text-emerald-800 font-bold">Total Products: 6</span>
+            </div>
+
+            <!-- 6 Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- PRODUCT 1 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100">
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded">25% OFF</span>
+                            <i class="fa-solid fa-droplet text-6xl text-emerald-700"></i>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <span class="text-gray-500 text-[11px] ml-1">(4.9/5)</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg">Diaba Care Syrup</h3>
+                            <p class="text-xs text-gray-500 mt-1">ब्लड शुगर को नियंत्रित करने और इंसुलिन लेवल सुधारने के लिए शुद्ध जामुन-करेला सिरप।</p>
+                            <div class="mt-4 flex items-baseline gap-2">
+                                <span class="text-xl font-extrabold text-emerald-900">₹449</span>
+                                <span class="text-xs text-gray-400 line-through">₹599</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <a href="https://wa.me/918750338234?text=Hi%2C%20I%20want%20to%20order%20Diaba%20Care%20Syrup" target="_blank" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition">
+                            <i class="fa-brands fa-whatsapp text-base text-green-400"></i> Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 2 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative bg-amber-50 h-52 flex items-center justify-center border-b border-gray-100">
+                            <span class="absolute top-3 left-3 bg-amber-600 text-white text-[10px] font-bold px-2 py-1 rounded">BEST SELLER</span>
+                            <i class="fa-solid fa-capsules text-6xl text-amber-700"></i>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <span class="text-gray-500 text-[11px] ml-1">(5.0/5)</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg">Orthoveda Pain Relief Oil</h3>
+                            <p class="text-xs text-gray-500 mt-1">जोड़ों के दर्द, आर्थराइटिस और पीठ के दर्द से तुरंत राहत दिलाने वाला हर्बल तेल।</p>
+                            <div class="mt-4 flex items-baseline gap-2">
+                                <span class="text-xl font-extrabold text-emerald-900">₹399</span>
+                                <span class="text-xs text-gray-400 line-through">₹499</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <a href="https://wa.me/918750338234?text=Hi%2C%20I%20want%20to%20order%20Orthoveda%20Pain%20Relief%20Oil" target="_blank" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition">
+                            <i class="fa-brands fa-whatsapp text-base text-green-400"></i> Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 3 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100">
+                            <span class="absolute top-3 left-3 bg-emerald-700 text-white text-[10px] font-bold px-2 py-1 rounded">100% PURE</span>
+                            <i class="fa-solid fa-jar text-6xl text-emerald-800"></i>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                <span class="text-gray-500 text-[11px] ml-1">(4.8/5)</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg">Pure Himalayan Shilajit Resin</h3>
+                            <p class="text-xs text-gray-500 mt-1">स्टैमिना, शक्ति और शारीरिक कमजोरी को दूर करने के लिए शुद्ध शिलाजीत रेजिन (20g)।</p>
+                            <div class="mt-4 flex items-baseline gap-2">
+                                <span class="text-xl font-extrabold text-emerald-900">₹999</span>
+                                <span class="text-xs text-gray-400 line-through">₹1,499</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <a href="https://wa.me/918750338234?text=Hi%2C%20I%20want%20to%20order%20Pure%20Himalayan%20Shilajit" target="_blank" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition">
+                            <i class="fa-brands fa-whatsapp text-base text-green-400"></i> Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 4 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative bg-amber-50 h-52 flex items-center justify-center border-b border-gray-100">
+                            <i class="fa-solid fa-vial text-6xl text-amber-800"></i>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <span class="text-gray-500 text-[11px] ml-1">(4.9/5)</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg">Ashwagandha Power Capsules</h3>
+                            <p class="text-xs text-gray-500 mt-1">तनाव कम करने, बेहतर नींद और इम्यूनिटी बढ़ाने के लिए उच्च गुणवत्ता वाला अश्वगंधा।</p>
+                            <div class="mt-4 flex items-baseline gap-2">
+                                <span class="text-xl font-extrabold text-emerald-900">₹349</span>
+                                <span class="text-xs text-gray-400 line-through">₹499</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <a href="https://wa.me/918750338234?text=Hi%2C%20I%20want%20to%20order%20Ashwagandha%20Capsules" target="_blank" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition">
+                            <i class="fa-brands fa-whatsapp text-base text-green-400"></i> Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 5 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100">
+                            <i class="fa-solid fa-bottle-droplet text-6xl text-emerald-700"></i>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                <span class="text-gray-500 text-[11px] ml-1">(4.7/5)</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg">Triphala Liver Cleanse Juice</h3>
+                            <p class="text-xs text-gray-500 mt-1">पाचन तंत्र को ठीक रखने, कब्ज दूर करने और लीवर की सफाई के लिए प्राकृतिक जूस।</p>
+                            <div class="mt-4 flex items-baseline gap-2">
+                                <span class="text-xl font-extrabold text-emerald-900">₹299</span>
+                                <span class="text-xs text-gray-400 line-through">₹399</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <a href="https://wa.me/918750338234?text=Hi%2C%20I%20want%20to%20order%20Triphala%20Juice" target="_blank" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition">
+                            <i class="fa-brands fa-whatsapp text-base text-green-400"></i> Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 6 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative bg-amber-50 h-52 flex items-center justify-center border-b border-gray-100">
+                            <span class="absolute top-3 left-3 bg-emerald-800 text-white text-[10px] font-bold px-2 py-1 rounded">IMMUNITY</span>
+                            <i class="fa-solid fa-leaf text-6xl text-emerald-800"></i>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <span class="text-gray-500 text-[11px] ml-1">(4.9/5)</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg">Giloy Ghanvati Tablets</h3>
+                            <p class="text-xs text-gray-500 mt-1">इम्यूनिटी बढ़ाने, बुखार और यूरिक एसिड को दूर करने के लिए गिलोय घनवटी।</p>
+                            <div class="mt-4 flex items-baseline gap-2">
+                                <span class="text-xl font-extrabold text-emerald-900">₹199</span>
+                                <span class="text-xs text-gray-400 line-through">₹250</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <a href="https://wa.me/918750338234?text=Hi%2C%20I%20want%20to%20order%20Giloy%20Ghanvati" target="_blank" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition">
+                            <i class="fa-brands fa-whatsapp text-base text-green-400"></i> Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BOTTOM BACK BUTTON -->
+            <div class="mt-16 text-center">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-emerald-900 hover:bg-emerald-950 text-amber-300 font-bold px-8 py-3.5 rounded-full text-sm shadow-md transition">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Main Website
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 text-gray-300 py-12 border-t border-emerald-900">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-amber-500 text-emerald-950 font-bold flex items-center justify-center rounded-full">SR</div>
+                    <span class="text-xl font-bold text-white">S.R. Ayurveda</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">S.R. Ayurveda Go India Pvt. Ltd.<br>Pure Ayurvedic formulations for a healthier, stronger lifestyle.</p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="index.html" class="hover:text-amber-300">Home Page</a></li>
+                    <li><a href="about.html" class="hover:text-amber-300">About Us</a></li>
+                    <li><a href="products.html" class="hover:text-amber-300">Products</a></li>
+                    <li><a href="index.html#blogs" class="hover:text-amber-300">Blogs</a></li>
                 </ul>
             </div>
 
-            <!-- Product Grid -->
-            <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Product 1 -->
-                <div class="bg-white p-4 rounded-lg shadow text-center border">
-                    <div class="h-40 bg-gray-200 rounded mb-3 flex items-center justify-center">Image</div>
-                    <h4 class="font-bold text-lg">Ashwagandha Churna</h4>
-                    <p class="text-amber-600 font-bold mt-1">₹299</p>
-                    <a href="product-detail.html" class="mt-3 block bg-emerald-800 text-white py-2 rounded">View Medicine Details</a>
-                </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4">Customer Policies</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="privacy-policy.html" class="hover:text-amber-300">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="hover:text-amber-300">Terms of Service</a></li>
+                </ul>
+            </div>
 
-                <!-- Product 2 -->
-                <div class="bg-white p-4 rounded-lg shadow text-center border">
-                    <div class="h-40 bg-gray-200 rounded mb-3 flex items-center justify-center">Image</div>
-                    <h4 class="font-bold text-lg">Shilajit Gold</h4>
-                    <p class="text-amber-600 font-bold mt-1">₹799</p>
-                    <a href="product-detail.html" class="mt-3 block bg-emerald-800 text-white py-2 rounded">View Medicine Details</a>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="bg-white p-4 rounded-lg shadow text-center border">
-                    <div class="h-40 bg-gray-200 rounded mb-3 flex items-center justify-center">Image</div>
-                    <h4 class="font-bold text-lg">Amla Neem Juice</h4>
-                    <p class="text-amber-600 font-bold mt-1">₹249</p>
-                    <a href="product-detail.html" class="mt-3 block bg-emerald-800 text-white py-2 rounded">View Medicine Details</a>
-                </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4">Get In Touch</h4>
+                <p class="text-xs text-gray-400 mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i>S.R. Ayurveda Head Office, New Delhi, India</p>
+                <p class="text-xs text-gray-400 mb-2"><i class="fa-solid fa-envelope text-amber-400 mr-2"></i>support@S.R.ayurveda.com</p>
+                <p class="text-xs text-gray-400"><i class="fa-solid fa-phone text-amber-400 mr-2"></i>+91 8750338234</p>
             </div>
         </div>
-    </div>
+
+        <div class="container mx-auto px-4 mt-10 pt-6 border-t border-emerald-900 text-center text-xs text-gray-500">
+            © 2026 S.R. Ayurveda (S.R.ayurveda.com). All Rights Reserved.
+        </div>
+    </footer>
 
 </body>
 </html>
