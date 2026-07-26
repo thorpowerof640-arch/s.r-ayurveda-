@@ -8,17 +8,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        #cart-drawer {
-            transition: transform 0.3s ease-in-out;
-        }
-    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
     <!-- Top Announcement Bar -->
     <div class="bg-emerald-900 text-amber-300 text-xs py-2 text-center font-medium tracking-wide">
-        ⚡ Heavy Discounts Available! 100% Ayurvedic & GMP Certified Products | Fast Shipping Across India ⚡
+        ⚡ 100% Ayurvedic & Natural Health Wisdom | S.R. Ayurveda Knowledge Center ⚡
     </div>
 
     <!-- Main Navigation Header -->
@@ -33,17 +28,7 @@
                 </div>
             </a>
 
-            <!-- Search Bar -->
-            <div class="hidden md:flex flex-1 max-w-md mx-8">
-                <div class="relative w-full">
-                    <input type="text" placeholder="Search for products, categories, health issues..." class="w-full bg-gray-100 border border-gray-300 rounded-full py-2 pl-4 pr-10 text-sm focus:outline-none focus:border-emerald-700">
-                    <button class="absolute right-3 top-2.5 text-gray-500 hover:text-emerald-800">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Navigation Links & Icons -->
+            <!-- Navigation & Back Button -->
             <div class="flex items-center space-x-6">
                 <nav class="hidden lg:flex space-x-6 text-sm font-semibold text-gray-700">
                     <a href="index.html#home" class="hover:text-emerald-800">Home</a>
@@ -51,74 +36,41 @@
                     <a href="index.html#products" class="hover:text-emerald-800">Products</a>
                     <a href="index.html#blogs" class="hover:text-emerald-800">Blogs</a>
                     <a href="about.html" class="hover:text-emerald-800">About Us</a>
-                    <a href="index.html#faq" class="hover:text-emerald-800">FAQ's</a>
                 </nav>
-                <div class="flex items-center space-x-4">
-                    <a href="#" class="text-gray-700 hover:text-emerald-800 text-lg"><i class="fa-regular fa-user"></i></a>
-                    
-                    <!-- CART BUCKET ICON -->
-                    <button onclick="toggleCart()" class="text-gray-700 hover:text-emerald-800 text-lg relative focus:outline-none">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span id="cart-count" class="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">0</span>
-                    </button>
-                </div>
+
+                <!-- BACK TO HOME BUTTON -->
+                <a href="index.html" class="bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-2 px-4 rounded-full flex items-center gap-2 transition shadow-sm">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Home
+                </a>
             </div>
         </div>
     </header>
-
-    <!-- SHOPPING CART BUCKET (SLIDING DRAWER) -->
-    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 z-50 hidden opacity-0 transition-opacity"></div>
-    
-    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full flex flex-col">
-        <div class="p-4 bg-emerald-900 text-white flex justify-between items-center">
-            <h3 class="font-bold text-lg flex items-center gap-2">
-                <i class="fa-solid fa-bag-shopping text-amber-400"></i> Your Order Bucket
-            </h3>
-            <button onclick="toggleCart()" class="text-gray-300 hover:text-white text-xl font-bold p-1">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4">
-            <div id="empty-cart-msg" class="text-center py-12 text-gray-500">
-                <i class="fa-solid fa-cart-flatbed text-5xl mb-3 text-gray-300"></i>
-                <p class="text-sm font-semibold">Your bucket is empty!</p>
-                <p class="text-xs text-gray-400 mt-1">Add products to place an order.</p>
-            </div>
-        </div>
-
-        <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
-            <div class="flex justify-between text-sm font-semibold text-gray-700">
-                <span>Total Amount:</span>
-                <span id="cart-subtotal" class="text-emerald-900 font-bold text-base">Rs. 0.00</span>
-            </div>
-            <p class="text-xs text-gray-500">Taxes included. Free shipping across India.</p>
-            <button onclick="proceedToCheckout()" class="w-full bg-amber-500 hover:bg-amber-600 text-emerald-950 font-extrabold py-3 rounded-lg shadow-md transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-lock"></i> Proceed to Checkout
-            </button>
-        </div>
-    </div>
 
     <!-- BLOG CONTENT SECTION -->
     <main class="py-12 bg-white">
         <div class="container mx-auto px-4 max-w-4xl">
             
             <!-- Breadcrumb Navigation -->
-            <nav class="text-xs text-gray-500 mb-6">
-                <a href="index.html" class="hover:text-emerald-800">Home</a> &gt; 
-                <a href="index.html#blogs" class="hover:text-emerald-800">Blogs</a> &gt; 
-                <span class="text-gray-800 font-semibold">मधुमेह (Diabetes) और उसके घरेलू उपचार</span>
-            </nav>
+            <div class="flex justify-between items-center mb-6">
+                <nav class="text-xs text-gray-500">
+                    <a href="index.html" class="hover:text-emerald-800">Home</a> &gt; 
+                    <a href="index.html#blogs" class="hover:text-emerald-800">Blogs</a> &gt; 
+                    <span class="text-gray-800 font-semibold">मधुमेह (Diabetes) और उसके घरेलू उपचार</span>
+                </nav>
+                <a href="index.html" class="text-xs font-bold text-emerald-800 hover:underline flex items-center gap-1">
+                    <i class="fa-solid fa-house"></i> Home Page
+                </a>
+            </div>
 
             <!-- Blog Header -->
             <div class="space-y-4 border-b border-gray-100 pb-8 mb-8">
-                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Diabetes & Healthcare</span>
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Diabetes Care</span>
                 <h1 class="text-3xl md:text-4xl font-extrabold text-emerald-950 leading-tight">
                     मधुमेह (Diabetes) और उसके घरेलू एवं प्राकृतिक उपचार
                 </h1>
                 <div class="flex items-center text-xs text-gray-500 gap-4 pt-2">
                     <span><i class="fa-regular fa-user text-emerald-700 mr-1"></i> By S.R. Ayurveda Team</span>
-                    <span><i class="fa-regular fa-calendar text-emerald-700 mr-1"></i> Updated Articles</span>
+                    <span><i class="fa-regular fa-calendar text-emerald-700 mr-1"></i> Health Article</span>
                 </div>
             </div>
 
@@ -133,7 +85,7 @@
             <article class="prose max-w-none text-gray-700 leading-relaxed space-y-6 text-sm md:text-base">
                 
                 <p class="text-base md:text-lg text-gray-800 font-medium leading-relaxed bg-amber-50/60 p-4 border-l-4 border-amber-500 rounded-r-lg">
-                    आज के समय में <strong>मधुमेह (Diabetes)</strong> एक आम लेकिन गंभीर स्वास्थ्य समस्या बनती जा रही है। जब शरीर में इंसुलिन का उत्पादन कम हो जाता है या शरीर इंसुलin का सही उपयोग नहीं कर पाता, तब ब्लड शुगर लेवल (रक्त शर्करा) बढ़ जाता है।
+                    आज के समय में <strong>मधुमेह (Diabetes)</strong> एक आम लेकिन गंभीर स्वास्थ्य समस्या बनती जा रही है। जब शरीर में इंसुलिन का उत्पादन कम हो जाता है या शरीर इंसुलिन का सही उपयोग नहीं कर पाता, तब ब्लड शुगर लेवल (रक्त शर्करा) बढ़ जाता है।
                 </p>
 
                 <h2 class="text-xl md:text-2xl font-bold text-emerald-900 border-b border-emerald-100 pb-2 pt-4">
@@ -199,16 +151,11 @@
                     </div>
                 </div>
 
-                <!-- Call To Action Box (Product Recommendation) -->
-                <div class="mt-8 p-6 bg-gradient-to-r from-emerald-900 to-emerald-950 text-white rounded-2xl border-2 border-amber-400/40 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div class="space-y-2">
-                        <span class="bg-amber-500 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full uppercase">100% Ayurvedic Solution</span>
-                        <h3 class="text-xl font-bold">मधुमेह नियंत्रण के लिए प्राकृतिक आयुर्वेदिक कैप्सूल</h3>
-                        <p class="text-xs text-gray-300">बिना किसी साइड-इफेक्ट के ब्लड शुगर को स्वाभाविक रूप से नियंत्रित करने में सहायक।</p>
-                    </div>
-                    <button onclick="addToCart(3, 'Diabetes Care Capsules', 1690)" class="whitespace-nowrap bg-amber-500 hover:bg-amber-600 text-emerald-950 font-extrabold px-6 py-3 rounded-lg text-sm shadow-md transition">
-                        Order Now (Rs. 2,490)
-                    </button>
+                <!-- BOTTOM BACK BUTTON -->
+                <div class="mt-12 text-center pt-8 border-t border-gray-200">
+                    <a href="index.html" class="inline-flex items-center gap-2 bg-emerald-900 hover:bg-emerald-950 text-amber-300 font-bold px-6 py-3 rounded-full text-sm shadow-md transition">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Main Website
+                    </a>
                 </div>
 
             </article>
@@ -224,18 +171,13 @@
                     <span class="text-xl font-bold text-white">S.R. Ayurveda</span>
                 </div>
                 <p class="text-xs text-gray-400 leading-relaxed">S.R. Ayurveda Go India Pvt. Ltd.<br>Pure Ayurvedic formulations for a healthier, stronger lifestyle.</p>
-                <div class="flex space-x-4 text-amber-400 text-lg">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                </div>
             </div>
 
             <div>
                 <h4 class="text-white font-bold text-sm mb-4">Quick Links</h4>
                 <ul class="space-y-2 text-xs">
+                    <li><a href="index.html" class="hover:text-amber-300">Home Page</a></li>
                     <li><a href="about.html" class="hover:text-amber-300">About Us</a></li>
-                    <li><a href="contact.html" class="hover:text-amber-300">Contact Us</a></li>
                     <li><a href="index.html#faq" class="hover:text-amber-300">FAQ's</a></li>
                     <li><a href="index.html#blogs" class="hover:text-amber-300">Blogs</a></li>
                 </ul>
@@ -245,12 +187,11 @@
                 <h4 class="text-white font-bold text-sm mb-4">Customer Policies</h4>
                 <ul class="space-y-2 text-xs">
                     <li><a href="privacy-policy.html" class="hover:text-amber-300">Privacy Policy</a></li>
-                    <li><a href="terms.html" class="hover:text-amber-300">Return & Refund Policy</a></li>
                     <li><a href="terms.html" class="hover:text-amber-300">Terms of Service</a></li>
                 </ul>
             </div>
 
-            <div id="contact">
+            <div>
                 <h4 class="text-white font-bold text-sm mb-4">Get In Touch</h4>
                 <p class="text-xs text-gray-400 mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i>S.R. Ayurveda Head Office, New Delhi, India</p>
                 <p class="text-xs text-gray-400 mb-2"><i class="fa-solid fa-envelope text-amber-400 mr-2"></i>support@S.R.ayurveda.com</p>
@@ -263,104 +204,5 @@
         </div>
     </footer>
 
-    <!-- CART JAVASCRIPT -->
-    <script>
-        let cart = [];
-
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            const overlay = document.getElementById('cart-overlay');
-            
-            if (drawer.classList.contains('translate-x-full')) {
-                drawer.classList.remove('translate-x-full');
-                overlay.classList.remove('hidden');
-                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
-            } else {
-                drawer.classList.add('translate-x-full');
-                overlay.classList.add('opacity-0');
-                setTimeout(() => overlay.classList.add('hidden'), 300);
-            }
-        }
-
-        function addToCart(id, name, price, qty = 1) {
-            const existingItem = cart.find(item => item.id === id);
-            
-            if (existingItem) {
-                existingItem.qty += qty;
-            } else {
-                cart.push({ id, name, price, qty });
-            }
-            
-            updateCartUI();
-            toggleCart();
-        }
-
-        function updateCartUI() {
-            const cartContainer = document.getElementById('cart-items');
-            const cartCountBadge = document.getElementById('cart-count');
-            const cartSubtotal = document.getElementById('cart-subtotal');
-
-            let totalItems = 0;
-            let subtotal = 0;
-
-            if (cart.length === 0) {
-                cartContainer.innerHTML = `
-                    <div id="empty-cart-msg" class="text-center py-12 text-gray-500">
-                        <i class="fa-solid fa-cart-flatbed text-5xl mb-3 text-gray-300"></i>
-                        <p class="text-sm font-semibold">Your bucket is empty!</p>
-                        <p class="text-xs text-gray-400 mt-1">Add products to place an order.</p>
-                    </div>`;
-            } else {
-                cartContainer.innerHTML = '';
-                cart.forEach(item => {
-                    totalItems += item.qty;
-                    subtotal += item.price * item.qty;
-
-                    cartContainer.innerHTML += `
-                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
-                            <div class="flex-1 pr-2">
-                                <h4 class="font-bold text-xs text-gray-900">${item.name}</h4>
-                                <p class="text-xs font-semibold text-emerald-800 mt-0.5">Rs. ${item.price.toLocaleString('en-IN')}</p>
-                                <div class="flex items-center gap-2 mt-2">
-                                    <button onclick="changeCartQty(${item.id}, -1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded text-xs font-bold">-</button>
-                                    <span class="text-xs font-bold px-1">${item.qty}</span>
-                                    <button onclick="changeCartQty(${item.id}, 1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded text-xs font-bold">+</button>
-                                </div>
-                            </div>
-                            <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-sm p-1">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </div>`;
-                });
-            }
-
-            cartCountBadge.innerText = totalItems;
-            cartSubtotal.innerText = `Rs. ${subtotal.toLocaleString('en-IN')}.00`;
-        }
-
-        function changeCartQty(id, delta) {
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                item.qty += delta;
-                if (item.qty <= 0) {
-                    cart = cart.filter(i => i.id !== id);
-                }
-            }
-            updateCartUI();
-        }
-
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCartUI();
-        }
-
-        function proceedToCheckout() {
-            if (cart.length === 0) {
-                alert('Aapka bucket khali hai! Pehle koi product add karein.');
-                return;
-            }
-            alert('Aapka order process ho raha hai!');
-        }
-    </script>
 </body>
 </html>
