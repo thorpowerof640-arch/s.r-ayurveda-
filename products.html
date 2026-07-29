@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,8 +56,8 @@
     <section class="bg-emerald-950 text-white py-10 border-b border-emerald-900">
         <div class="container mx-auto px-4 text-center">
             <span class="bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Ayurvedic Nutrition Essentials</span>
-            <h1 class="text-3xl md:text-4xl font-extrabold mt-3 text-white">हमारे लोकप्रिय उत्पाद</h1>
-            <p class="text-gray-300 text-xs md:text-sm mt-2 max-w-xl mx-auto">Discover our most popular, customer-loved Ayurvedic nutrition essentials.</p>
+            <h1 class="text-3xl md:text-4xl font-extrabold mt-3 text-white">Our Popular Products</h1>
+            <p class="text-gray-300 text-xs md:text-sm mt-2 max-w-xl mx-auto">Click on any product to view detailed specifications, benefits, and usage instructions.</p>
         </div>
     </section>
 
@@ -77,16 +77,19 @@
             <!-- 6 Products Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                <!-- PRODUCT 1 (Image 1) -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between">
-                    <div>
-                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100">
-                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">Sale</span>
-                            <i class="fa-solid fa-mortar-pestle text-6xl text-emerald-800/40"></i>
+                <!-- PRODUCT 1 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between group">
+                    <div onclick="openProductModal(1)" class="cursor-pointer">
+                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100 overflow-hidden">
+                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">50% OFF</span>
+                            <i class="fa-solid fa-mortar-pestle text-6xl text-emerald-800/40 group-hover:scale-110 transition duration-300"></i>
+                            <div class="absolute inset-0 bg-emerald-900/10 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <span class="bg-white text-emerald-900 text-xs font-bold px-3 py-1.5 rounded-full shadow"><i class="fa-solid fa-eye mr-1"></i> Quick View</span>
+                            </div>
                         </div>
                         <div class="p-5">
                             <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">WEIGHT MANAGEMENT</span>
-                            <h3 class="font-bold text-gray-900 text-base mt-1">Green Coffee Bean Extract</h3>
+                            <h3 class="font-bold text-gray-900 text-base mt-1 group-hover:text-emerald-800 transition">Green Coffee Bean Extract</h3>
                             <p class="text-xs text-gray-500 mt-2 line-clamp-2">Natural weight loss booster with antioxidants to boost metabolism.</p>
                             <div class="mt-4 flex items-baseline gap-2">
                                 <span class="text-xs text-gray-400 line-through">Rs. 3,380.00</span>
@@ -101,16 +104,19 @@
                     </div>
                 </div>
 
-                <!-- PRODUCT 2 (Image 2) -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between">
-                    <div>
-                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100">
-                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">Sale</span>
-                            <i class="fa-solid fa-vial text-6xl text-emerald-800/40"></i>
+                <!-- PRODUCT 2 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between group">
+                    <div onclick="openProductModal(2)" class="cursor-pointer">
+                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100 overflow-hidden">
+                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">50% OFF</span>
+                            <i class="fa-solid fa-vial text-6xl text-emerald-800/40 group-hover:scale-110 transition duration-300"></i>
+                            <div class="absolute inset-0 bg-emerald-900/10 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <span class="bg-white text-emerald-900 text-xs font-bold px-3 py-1.5 rounded-full shadow"><i class="fa-solid fa-eye mr-1"></i> Quick View</span>
+                            </div>
                         </div>
                         <div class="p-5">
                             <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">JOINT PAIN CARE</span>
-                            <h3 class="font-bold text-gray-900 text-base mt-1">FLEX COMFORT GEL</h3>
+                            <h3 class="font-bold text-gray-900 text-base mt-1 group-hover:text-emerald-800 transition">FLEX COMFORT GEL</h3>
                             <p class="text-xs text-gray-500 mt-2 line-clamp-2">Herbal joint pain relief gel for fast recovery and arthritis care.</p>
                             <div class="mt-4 flex items-baseline gap-2">
                                 <span class="text-xs text-gray-400 line-through">Rs. 4,980.00</span>
@@ -125,16 +131,19 @@
                     </div>
                 </div>
 
-                <!-- PRODUCT 3 (Image 3) -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between">
-                    <div>
-                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100">
-                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">Sale</span>
-                            <i class="fa-solid fa-capsules text-6xl text-emerald-800/40"></i>
+                <!-- PRODUCT 3 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between group">
+                    <div onclick="openProductModal(3)" class="cursor-pointer">
+                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100 overflow-hidden">
+                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">50% OFF</span>
+                            <i class="fa-solid fa-capsules text-6xl text-emerald-800/40 group-hover:scale-110 transition duration-300"></i>
+                            <div class="absolute inset-0 bg-emerald-900/10 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <span class="bg-white text-emerald-900 text-xs font-bold px-3 py-1.5 rounded-full shadow"><i class="fa-solid fa-eye mr-1"></i> Quick View</span>
+                            </div>
                         </div>
                         <div class="p-5">
                             <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">MALE WELLNESS</span>
-                            <h3 class="font-bold text-gray-900 text-base mt-1">POWER OF THOR CAPSULES</h3>
+                            <h3 class="font-bold text-gray-900 text-base mt-1 group-hover:text-emerald-800 transition">POWER OF THOR CAPSULES</h3>
                             <p class="text-xs text-gray-500 mt-2 line-clamp-2">Natural stamina, energy and testosterone booster formulation.</p>
                             <div class="mt-4 flex items-baseline gap-2">
                                 <span class="text-xs text-gray-400 line-through">Rs. 4,500.00</span>
@@ -149,16 +158,19 @@
                     </div>
                 </div>
 
-                <!-- PRODUCT 4 (Image 4) -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between">
-                    <div>
-                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100">
-                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">Sale</span>
-                            <i class="fa-solid fa-pills text-6xl text-emerald-800/40"></i>
+                <!-- PRODUCT 4 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between group">
+                    <div onclick="openProductModal(4)" class="cursor-pointer">
+                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100 overflow-hidden">
+                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">50% OFF</span>
+                            <i class="fa-solid fa-pills text-6xl text-emerald-800/40 group-hover:scale-110 transition duration-300"></i>
+                            <div class="absolute inset-0 bg-emerald-900/10 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <span class="bg-white text-emerald-900 text-xs font-bold px-3 py-1.5 rounded-full shadow"><i class="fa-solid fa-eye mr-1"></i> Quick View</span>
+                            </div>
                         </div>
                         <div class="p-5">
                             <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">MALE WELLNESS</span>
-                            <h3 class="font-bold text-gray-900 text-base mt-1">POWER OF THOR RED CAPSULE</h3>
+                            <h3 class="font-bold text-gray-900 text-base mt-1 group-hover:text-emerald-800 transition">POWER OF THOR RED CAPSULE</h3>
                             <p class="text-xs text-gray-500 mt-2 line-clamp-2">Premium Gold Shilajit & Ashwagandha capsule formulation.</p>
                             <div class="mt-4 flex items-baseline gap-2">
                                 <span class="text-xs text-gray-400 line-through">Rs. 4,500.00</span>
@@ -173,40 +185,46 @@
                     </div>
                 </div>
 
-                <!-- PRODUCT 5 (Extra) -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between">
-                    <div>
-                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100">
-                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">Sale</span>
-                            <i class="fa-solid fa-droplet text-6xl text-emerald-800/40"></i>
+                <!-- PRODUCT 5 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between group">
+                    <div onclick="openProductModal(5)" class="cursor-pointer">
+                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100 overflow-hidden">
+                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">Sale</span>
+                            <i class="fa-solid fa-droplet text-6xl text-emerald-800/40 group-hover:scale-110 transition duration-300"></i>
+                            <div class="absolute inset-0 bg-emerald-900/10 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <span class="bg-white text-emerald-900 text-xs font-bold px-3 py-1.5 rounded-full shadow"><i class="fa-solid fa-eye mr-1"></i> Quick View</span>
+                            </div>
                         </div>
                         <div class="p-5">
                             <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">DIABETES CARE</span>
-                            <h3 class="font-bold text-gray-900 text-base mt-1">INSUL-X</h3>
+                            <h3 class="font-bold text-gray-900 text-base mt-1 group-hover:text-emerald-800 transition">INSUL-X</h3>
                             <p class="text-xs text-gray-500 mt-2 line-clamp-2">Natural sugar control juice with Jamun, Karela & Neem extract.</p>
                             <div class="mt-4 flex items-baseline gap-2">
-                                <span class="text-xs text-gray-400 line-through">Rs. 3,500</span>
-                                <span class="text-lg font-extrabold text-emerald-950">Rs. 2,490</span>
+                                <span class="text-xs text-gray-400 line-through">Rs. 3,500.00</span>
+                                <span class="text-lg font-extrabold text-emerald-950">Rs. 2,490.00</span>
                             </div>
                         </div>
                     </div>
                     <div class="p-5 pt-0">
-                        <button onclick="addToCart('DIABA CARE SYRUP', 699)" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white text-sm font-bold py-2.5 rounded-lg transition">
+                        <button onclick="addToCart('INSUL-X', 2490)" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white text-sm font-bold py-2.5 rounded-lg transition">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
-                <!-- PRODUCT 6 (Extra) -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between">
-                    <div>
-                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100">
-                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">Sale</span>
-                            <i class="fa-solid fa-jar text-6xl text-emerald-800/40"></i>
+                <!-- PRODUCT 6 -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition relative flex flex-col justify-between group">
+                    <div onclick="openProductModal(6)" class="cursor-pointer">
+                        <div class="relative bg-emerald-50 h-52 flex items-center justify-center border-b border-gray-100 overflow-hidden">
+                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">50% OFF</span>
+                            <i class="fa-solid fa-jar text-6xl text-emerald-800/40 group-hover:scale-110 transition duration-300"></i>
+                            <div class="absolute inset-0 bg-emerald-900/10 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <span class="bg-white text-emerald-900 text-xs font-bold px-3 py-1.5 rounded-full shadow"><i class="fa-solid fa-eye mr-1"></i> Quick View</span>
+                            </div>
                         </div>
                         <div class="p-5">
                             <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">IMMUNITY & STRENGTH</span>
-                            <h3 class="font-bold text-gray-900 text-base mt-1">PURE SHILAJIT RESIN</h3>
+                            <h3 class="font-bold text-gray-900 text-base mt-1 group-hover:text-emerald-800 transition">PURE SHILAJIT RESIN</h3>
                             <p class="text-xs text-gray-500 mt-2 line-clamp-2">100% Himalayan Shilajit Resin for stamina, vitality and immune strength.</p>
                             <div class="mt-4 flex items-baseline gap-2">
                                 <span class="text-xs text-gray-400 line-through">Rs. 2,999.00</span>
@@ -233,7 +251,72 @@
         </div>
     </section>
 
-    <!-- SIDE CART DRAWER (Slide-out Cart) -->
+    <!-- PRODUCT DETAILS MODAL (POPUP) -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative animate-fade-in max-h-[90vh] flex flex-col">
+            <!-- Close Button -->
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 bg-gray-100 hover:bg-gray-200 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center font-bold text-lg transition">
+                &times;
+            </button>
+
+            <div class="p-6 overflow-y-auto space-y-5">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <!-- Modal Left Icon/Visual -->
+                    <div class="w-full md:w-1/3 bg-emerald-50 rounded-xl h-48 md:h-auto flex items-center justify-center relative border border-emerald-100">
+                        <i id="modal-icon" class="fa-solid fa-mortar-pestle text-7xl text-emerald-800"></i>
+                        <span id="modal-badge" class="absolute top-3 left-3 bg-emerald-800 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">AYURVEDIC</span>
+                    </div>
+
+                    <!-- Modal Right Details -->
+                    <div class="w-full md:w-2/3 space-y-3">
+                        <span id="modal-category" class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Category</span>
+                        <h2 id="modal-title" class="text-2xl font-extrabold text-gray-900">Product Title</h2>
+                        
+                        <div class="flex items-center gap-3">
+                            <span id="modal-price" class="text-2xl font-extrabold text-emerald-950">Rs. 0</span>
+                            <span id="modal-original-price" class="text-sm text-gray-400 line-through">Rs. 0</span>
+                            <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">Special Offer</span>
+                        </div>
+
+                        <p id="modal-description" class="text-xs text-gray-600 leading-relaxed">Product detailed description will appear here.</p>
+                        
+                        <div class="border-t border-gray-100 pt-3">
+                            <h4 class="text-xs font-bold text-gray-900 mb-1"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> Key Benefits:</h4>
+                            <ul id="modal-benefits" class="text-xs text-gray-600 list-disc list-inside space-y-1">
+                                <!-- Dynamic benefits -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ingredients & Dosage Tabs -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100 text-xs">
+                    <div>
+                        <span class="font-bold text-gray-900 block mb-1"><i class="fa-solid fa-leaf text-emerald-700 mr-1"></i> Key Ingredients:</span>
+                        <p id="modal-ingredients" class="text-gray-600">Pure Extracts</p>
+                    </div>
+                    <div>
+                        <span class="font-bold text-gray-900 block mb-1"><i class="fa-solid fa-clock text-emerald-700 mr-1"></i> Dosage Instructions:</span>
+                        <p id="modal-dosage" class="text-gray-600">As directed by Ayurvedic Physician.</p>
+                    </div>
+                </div>
+
+                <!-- Quantity & Add to Cart -->
+                <div class="flex items-center gap-4 pt-2 border-t border-gray-100">
+                    <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                        <button onclick="changeQty(-1)" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold">-</button>
+                        <span id="modal-qty" class="px-4 py-2 text-xs font-bold text-gray-800">1</span>
+                        <button onclick="changeQty(1)" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold">+</button>
+                    </div>
+                    <button id="modal-add-btn" class="flex-1 bg-emerald-900 hover:bg-emerald-950 text-white font-bold py-3 px-6 rounded-lg text-sm transition shadow">
+                        <i class="fa-solid fa-cart-shopping mr-2"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDE CART DRAWER -->
     <div id="cart-drawer" class="fixed inset-y-0 right-0 w-80 md:w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 flex flex-col justify-between">
         <div class="p-5 border-b border-gray-100 flex items-center justify-between bg-emerald-900 text-white">
             <h3 class="font-bold text-base flex items-center gap-2"><i class="fa-solid fa-cart-shopping text-amber-300"></i> Your Shopping Cart</h3>
@@ -258,10 +341,157 @@
     <!-- CART OVERLAY -->
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 hidden z-40"></div>
 
-    <!-- CART JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
+        // Products Database in English
+        const productsData = {
+            1: {
+                name: "Green Coffee Bean Extract",
+                category: "WEIGHT MANAGEMENT",
+                price: 1690,
+                originalPrice: 3380,
+                icon: "fa-mortar-pestle",
+                description: "100% natural Green Coffee Bean Extract formulation designed to support healthy weight management and boost metabolic rate. Rich in Chlorogenic Acid, which helps burn unwanted body fat and maintain active energy levels.",
+                benefits: [
+                    "Accelerates metabolism and promotes fat burning",
+                    "Keeps the body energetic throughout the day",
+                    "Helps naturally suppress appetite and cravings",
+                    "Rich in powerful natural antioxidants"
+                ],
+                ingredients: "Pure Green Coffee Bean Extract (Standardized to 50% Chlorogenic Acid)",
+                dosage: "Take 1 capsule twice daily, 30 minutes before meals with warm water."
+            },
+            2: {
+                name: "FLEX COMFORT GEL",
+                category: "JOINT PAIN CARE",
+                price: 2490,
+                originalPrice: 4980,
+                icon: "fa-vial",
+                description: "Flex Comfort Gel provides fast-acting relief from joint pain, arthritis discomfort, stiffness, and muscle soreness. Formulated with potent herbal essential oils that penetrate deeply into the skin for quick recovery.",
+                benefits: [
+                    "Immediate relief from joint and knee pain",
+                    "Reduces swelling, inflammation, and stiffness",
+                    "Enhances muscle flexibility and joint mobility",
+                    "Non-sticky, fast-absorbing herbal formula"
+                ],
+                ingredients: "Gandhapura Oil, Sesame Oil, Camphor, Eucalyptus Oil, Menthol Extract & Nirgundi Extract",
+                dosage: "Gently massage a small amount onto the affected area 2-3 times daily."
+            },
+            3: {
+                name: "POWER OF THOR CAPSULES",
+                category: "MALE WELLNESS",
+                price: 2250,
+                originalPrice: 4500,
+                icon: "fa-capsules",
+                description: "Power of Thor Capsules is an authentic Ayurvedic formulation designed to boost male physical strength, stamina, energy, and natural testosterone levels. It relieves fatigue and revitalizes overall performance.",
+                benefits: [
+                    "Boosts physical stamina, strength, and vitality",
+                    "Enhances natural testosterone production",
+                    "Reduces physical exhaustion and mental stress",
+                    "Supports immune health and muscle strength"
+                ],
+                ingredients: "Pure Shilajit, Ashwagandha, Safed Musli, Kaunch Beej, Gokshura & Swarna Bhasma Yogh",
+                dosage: "1 capsule twice daily with warm milk after meals."
+            },
+            4: {
+                name: "POWER OF THOR RED CAPSULE",
+                category: "MALE WELLNESS",
+                price: 2250,
+                originalPrice: 4500,
+                icon: "fa-pills",
+                description: "Formulated with premium Himalayan Gold Shilajit and high-grade Ashwagandha, Power of Thor Red Capsules reinvigorates the body with vital energy and helps overcome physical weakness.",
+                benefits: [
+                    "Highly effective for physical weakness and nerve health",
+                    "Enhances stamina, power, and physical endurance",
+                    "Improves internal blood circulation",
+                    "Sustains peak energy levels over extended periods"
+                ],
+                ingredients: "Himalayan Gold Shilajit, Ashwagandha Extract, Yashad Bhasma, Akarkara & Shatavari",
+                dosage: "1 capsule at bedtime with warm milk."
+            },
+            5: {
+                name: "INSUL-X",
+                category: "DIABETES CARE",
+                price: 2490,
+                originalPrice: 3500,
+                icon: "fa-droplet",
+                description: "Insul-X is a natural Ayurvedic sugar care juice crafted to help maintain healthy blood glucose levels. Formulated with powerful natural extracts of Jamun, Karela, Neem, and Giloy to support pancreatic health.",
+                benefits: [
+                    "Helps regulate and maintain healthy blood sugar levels",
+                    "Supports natural insulin secretion in the pancreas",
+                    "Relieves frequent thirst and fatigue associated with high sugar",
+                    "Promotes healthy digestion and liver function"
+                ],
+                ingredients: "Jamun Seed Extract, Bitter Gourd (Karela), Neem Leaves, Fenugreek, Vijayasar & Giloy",
+                dosage: "Mix 15-20 ml in a glass of water and consume on an empty stomach in the morning."
+            },
+            6: {
+                name: "PURE SHILAJIT RESIN",
+                category: "IMMUNITY & STRENGTH",
+                price: 1499,
+                originalPrice: 2999,
+                icon: "fa-jar",
+                description: "100% pure Himalayan Shilajit Resin packed with 80+ essential minerals and high Fulvic Acid content. A natural superfood designed to enhance immunity, stamina, cognitive focus, and overall vitality.",
+                benefits: [
+                    "Rich in 80+ trace minerals and 80% Fulvic Acid",
+                    "Strengthens immune system and stamina",
+                    "Promotes natural anti-aging and skin health",
+                    "Dramatically improves physical and mental performance"
+                ],
+                ingredients: "100% Pure Himalayan Raw Shilajit Resin (Lab Tested)",
+                dosage: "Dissolve a pea-sized amount (300-500mg) in warm water or milk daily."
+            }
+        };
+
+        let currentQty = 1;
+        let currentActiveProductId = null;
         let cart = [];
 
+        // Open Modal Function
+        function openProductModal(productId) {
+            const product = productsData[productId];
+            if (!product) return;
+
+            currentActiveProductId = productId;
+            currentQty = 1;
+            document.getElementById('modal-qty').innerText = currentQty;
+
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-category').innerText = product.category;
+            document.getElementById('modal-price').innerText = `Rs. ${product.price.toLocaleString('en-IN')}.00`;
+            document.getElementById('modal-original-price').innerText = `Rs. ${product.originalPrice.toLocaleString('en-IN')}.00`;
+            document.getElementById('modal-description').innerText = product.description;
+            document.getElementById('modal-ingredients').innerText = product.ingredients;
+            document.getElementById('modal-dosage').innerText = product.dosage;
+
+            const iconElem = document.getElementById('modal-icon');
+            iconElem.className = `fa-solid ${product.icon} text-7xl text-emerald-800`;
+
+            const benefitsList = document.getElementById('modal-benefits');
+            benefitsList.innerHTML = product.benefits.map(b => `<li>${b}</li>`).join('');
+
+            const addBtn = document.getElementById('modal-add-btn');
+            addBtn.onclick = function() {
+                addToCart(product.name, product.price, currentQty);
+                closeProductModal();
+            };
+
+            document.getElementById('product-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeQty(change) {
+            currentQty += change;
+            if (currentQty < 1) currentQty = 1;
+            document.getElementById('modal-qty').innerText = currentQty;
+        }
+
+        // Cart Logic
         function toggleCart() {
             const drawer = document.getElementById('cart-drawer');
             const overlay = document.getElementById('cart-overlay');
@@ -269,8 +499,13 @@
             overlay.classList.toggle('hidden');
         }
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
+        function addToCart(name, price, qty = 1) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ name, price, qty });
+            }
             updateCartUI();
             toggleCart();
         }
@@ -281,7 +516,8 @@
         }
 
         function updateCartUI() {
-            document.getElementById('cart-count').innerText = cart.length;
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').innerText = totalCount;
             const container = document.getElementById('cart-items');
             
             if (cart.length === 0) {
@@ -296,13 +532,15 @@
             let itemsListText = '';
 
             cart.forEach((item, index) => {
-                total += item.price;
-                itemsListText += `- ${item.name} (Rs. ${item.price})\n`;
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                itemsListText += `- ${item.name} x ${item.qty} (Rs. ${itemTotal})\n`;
                 html += `
                     <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
                         <div>
                             <p class="font-bold text-gray-900">${item.name}</p>
-                            <p class="text-emerald-800 font-bold mt-0.5">Rs. ${item.price.toLocaleString('en-IN')}.00</p>
+                            <p class="text-xs text-gray-500">Qty: ${item.qty}</p>
+                            <p class="text-emerald-800 font-bold mt-0.5">Rs. ${itemTotal.toLocaleString('en-IN')}.00</p>
                         </div>
                         <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 font-bold text-xs p-1">Remove</button>
                     </div>
@@ -313,7 +551,7 @@
             document.getElementById('cart-total').innerText = `Rs. ${total.toLocaleString('en-IN')}.00`;
             
             // Build WhatsApp Message
-            const whatsappMsg = encodeURIComponent(`Hi S.R. Ayurveda, I want to order the following products:\n\n${itemsListText}\nTotal: Rs. ${total.toLocaleString('en-IN')}.00\n\nPlease let me know the payment details.`);
+            const whatsappMsg = encodeURIComponent(`Hi S.R. Ayurveda, I want to order the following products:\n\n${itemsListText}\nTotal Amount: Rs. ${total.toLocaleString('en-IN')}.00\n\nPlease confirm my order & provide payment details.`);
             document.getElementById('whatsapp-checkout').href = `https://wa.me/918750338234?text=${whatsappMsg}`;
         }
     </script>
