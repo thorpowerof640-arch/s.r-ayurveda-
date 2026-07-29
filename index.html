@@ -65,7 +65,7 @@
                 <nav class="hidden lg:flex space-x-6 text-sm font-semibold text-gray-700">
                     <a href="#home" class="hover:text-emerald-800">Home</a>
                     <a href="#categories" class="hover:text-emerald-800">Categories</a>
-                    <a href="#products" class="hover:text-emerald-800">Products</a>
+                    <a href="product.html" class="hover:text-emerald-800">Products</a>
                     <a href="#blogs" class="hover:text-emerald-800">Blogs</a>
                     <a href="about.html" class="hover:text-emerald-800">About Us</a>
                     <a href="#faq" class="hover:text-emerald-800">FAQ's</a>
@@ -73,7 +73,7 @@
                 <div class="flex items-center space-x-4">
                     <a href="#" class="text-gray-700 hover:text-emerald-800 text-lg"><i class="fa-regular fa-user"></i></a>
                     
-                    <!-- CART BUCKET ICON (Click karne par bucket khulega) -->
+                    <!-- CART BUCKET ICON -->
                     <button onclick="toggleCart()" class="text-gray-700 hover:text-emerald-800 text-lg relative focus:outline-none">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span id="cart-count" class="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">0</span>
@@ -189,7 +189,7 @@
                     <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-900">Best Selling Products</h2>
                     <p class="text-gray-600 text-sm mt-1">Discover our most popular, customer-loved Ayurvedic nutrition essentials.</p>
                 </div>
-                <a href="products.html" class="mt-4 md:mt-0 text-emerald-800 font-bold hover:underline text-sm flex items-center gap-1">View All Products <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                <a href="product.html" class="mt-4 md:mt-0 text-emerald-800 font-bold hover:underline text-sm flex items-center gap-1">View All Products <i class="fa-solid fa-arrow-right text-xs"></i></a>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -493,11 +493,71 @@
         </div>
     </div>
 
+    <!-- ORDER CHECKOUT FORM MODAL -->
+    <div id="checkout-modal-overlay" onclick="closeCheckoutModal()" class="fixed inset-0 bg-black/60 z-50 hidden opacity-0 transition-opacity"></div>
+    <div id="checkout-modal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl z-50 w-11/12 max-w-lg max-h-[90vh] overflow-y-auto hidden opacity-0 modal-animate">
+        <div class="p-6">
+            <div class="flex justify-between items-center pb-3 border-b border-gray-100 mb-4">
+                <h3 class="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                    <i class="fa-solid fa-truck-fast text-amber-500"></i> Shipping & Order Form
+                </h3>
+                <button onclick="closeCheckoutModal()" class="text-gray-400 hover:text-gray-800 text-xl font-bold">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="order-form" onsubmit="submitOrder(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Full Name *</label>
+                    <input type="text" id="cust-name" required placeholder="Enter full name" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:outline-none focus:border-emerald-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Mobile Number *</label>
+                    <input type="tel" id="cust-phone" required pattern="[0-9]{10}" placeholder="10 Digit Phone Number" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:outline-none focus:border-emerald-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Delivery Address *</label>
+                    <textarea id="cust-address" required rows="2" placeholder="House No, Street Name, Area" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:outline-none focus:border-emerald-700"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Pincode *</label>
+                        <input type="text" id="cust-pincode" required placeholder="6-digit Pincode" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:outline-none focus:border-emerald-700">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">State *</label>
+                        <input type="text" id="cust-state" required placeholder="State" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:outline-none focus:border-emerald-700">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Payment Method</label>
+                    <select id="cust-payment" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:outline-none focus:border-emerald-700">
+                        <option value="Cash on Delivery (COD)">Cash on Delivery (COD)</option>
+                        <option value="Online Payment / UPI">Online Payment / UPI</option>
+                    </select>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-100 mt-2">
+                    <div class="flex justify-between text-xs font-bold text-emerald-900">
+                        <span>Total Payable Amount:</span>
+                        <span id="checkout-total-amount">Rs. 0.00</span>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-extrabold py-3 rounded-lg shadow-md transition text-sm">
+                    Confirm & Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- CART JAVASCRIPT & MODAL LOGIC -->
     <script>
-        let cart = [];
+        // Load cart from LocalStorage on page start
+        let cart = JSON.parse(localStorage.getItem('sr_ayurveda_cart')) || [];
 
-        // Complete Product Database for Modals & Pages
+        function saveCart() {
+            localStorage.setItem('sr_ayurveda_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
         const productsDB = {
             1: {
                 id: 1,
@@ -506,7 +566,7 @@
                 price: 1690,
                 originalPrice: 3380,
                 icon: "fa-mortar-pestle",
-                pageUrl: "green-coffee-bean-extract.html",
+                pageUrl: "product.html",
                 tagline: "Natural weight loss booster with antioxidants to boost metabolism.",
                 description: "Green Coffee Bean Extract unroasted coffee beans se bana ek powerful Ayurvedic & Natural supplement hai. Isme Chlorogenic Acid hota hai jo body ke fat metabolism ko teez karta hai, appetite control me madad karta hai aur natural energy boost deta hai.",
                 benefits: [
@@ -525,7 +585,7 @@
                 price: 2490,
                 originalPrice: 4980,
                 icon: "fa-vial",
-                pageUrl: "flex-comfort-gel.html",
+                pageUrl: "product.html",
                 tagline: "Herbal joint pain relief gel for fast recovery and arthritis care.",
                 description: "Flex Comfort Gel ek vishesh Ayurvedic gel hai jo jodon ke dard, ghutno ke dard, arthritis, sujan aur muscle stiffness se turant rahat dilata hai. Iska herbal formula twacha me gehrai tak absorbing karke dard ko jad se kam karta hai.",
                 benefits: [
@@ -544,7 +604,7 @@
                 price: 2250,
                 originalPrice: 4500,
                 icon: "fa-capsules",
-                pageUrl: "power-of-thor-capsules.html",
+                pageUrl: "product.html",
                 tagline: "Natural stamina, energy and testosterone booster formulation.",
                 description: "Power of Thor Capsules mardana taqat, stamina, aur energy badhane ke liye ek behtereen Ayurvedic formula hai. Yah thakavat ko dur karta hai aur physical performance aur testosterone level ko natural tarike se boost karta hai.",
                 benefits: [
@@ -563,7 +623,7 @@
                 price: 2250,
                 originalPrice: 4500,
                 icon: "fa-pills",
-                pageUrl: "power-of-thor-red-capsule.html",
+                pageUrl: "product.html",
                 tagline: "Premium Gold Shilajit & Ashwagandha capsule formulation.",
                 description: "Power of Thor Red Capsule ek premium grade Ayurvedic stamina enhancer hai. Isme Shuddha Shilajit, Swarna Bhasma aur Ashwagandha ka shaktishali mishran hai jo vigo, vitality aur energy ko peak par le jata hai.",
                 benefits: [
@@ -582,7 +642,7 @@
                 price: 2250,
                 originalPrice: 4500,
                 icon: "fa-prescription-bottle-medical",
-                pageUrl: "power-of-thor-plus-capsule.html",
+                pageUrl: "product.html",
                 tagline: "Ultimate Maximum Strength Ayurvedic Vitality Formula.",
                 description: "Power of Thor Plus Capsule S.R. Ayurveda ka sabse powerful aur advance formulation hai. Isme Gold Bhasma aur Shuddha Shilajit ki highest concentration hai jo pure body ki strength aur stamina ko rejuvenate karti hai.",
                 benefits: [
@@ -612,15 +672,15 @@
         }
 
         function addToCart(id, name, price, qty = 1) {
-            const existingItem = cart.find(item => item.id === id);
+            const existingItem = cart.find(item => item.id === id || item.name === name);
             
             if (existingItem) {
                 existingItem.qty += qty;
             } else {
-                cart.push({ id, name, price, qty });
+                cart.push({ id: id || Date.now(), name, price, qty });
             }
             
-            updateCartUI();
+            saveCart();
             toggleCart();
         }
 
@@ -661,12 +721,12 @@
                                 <h4 class="font-bold text-xs text-gray-900">${item.name}</h4>
                                 <p class="text-xs font-semibold text-emerald-800 mt-0.5">Rs. ${item.price.toLocaleString('en-IN')}</p>
                                 <div class="flex items-center gap-2 mt-2">
-                                    <button onclick="changeCartQty(${item.id}, -1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded text-xs font-bold">-</button>
+                                    <button onclick="changeCartQty('${item.name}', -1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded text-xs font-bold">-</button>
                                     <span class="text-xs font-bold px-1">${item.qty}</span>
-                                    <button onclick="changeCartQty(${item.id}, 1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded text-xs font-bold">+</button>
+                                    <button onclick="changeCartQty('${item.name}', 1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded text-xs font-bold">+</button>
                                 </div>
                             </div>
-                            <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-sm p-1">
+                            <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700 text-sm p-1">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>`;
@@ -677,20 +737,20 @@
             cartSubtotal.innerText = `Rs. ${subtotal.toLocaleString('en-IN')}.00`;
         }
 
-        function changeCartQty(id, delta) {
-            const item = cart.find(i => i.id === id);
+        function changeCartQty(identifier, delta) {
+            const item = cart.find(i => i.name === identifier || i.id === identifier);
             if (item) {
                 item.qty += delta;
                 if (item.qty <= 0) {
-                    cart = cart.filter(i => i.id !== id);
+                    cart = cart.filter(i => i !== item);
                 }
             }
-            updateCartUI();
+            saveCart();
         }
 
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCartUI();
+        function removeFromCart(identifier) {
+            cart = cart.filter(item => item.name !== identifier && item.id !== identifier);
+            saveCart();
         }
 
         function increaseQty(elementId) {
@@ -709,7 +769,62 @@
                 alert('Aapka bucket khali hai! Pehle koi product add karein.');
                 return;
             }
-            alert('Aapka order process ho raha hai!');
+            toggleCart();
+            let total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('checkout-total-amount').innerText = `Rs. ${total.toLocaleString('en-IN')}.00`;
+
+            const modal = document.getElementById('checkout-modal');
+            const overlay = document.getElementById('checkout-modal-overlay');
+            modal.classList.remove('hidden');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                overlay.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeCheckoutModal() {
+            const modal = document.getElementById('checkout-modal');
+            const overlay = document.getElementById('checkout-modal-overlay');
+            modal.classList.add('opacity-0');
+            overlay.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                overlay.classList.add('hidden');
+            }, 300);
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const address = document.getElementById('cust-address').value;
+            const pincode = document.getElementById('cust-pincode').value;
+            const state = document.getElementById('cust-state').value;
+            const payment = document.getElementById('cust-payment').value;
+
+            let itemsListText = '';
+            let total = 0;
+            cart.forEach(item => {
+                let itemTotal = item.price * item.qty;
+                total += itemTotal;
+                itemsListText += `• ${item.name} x ${item.qty} (Rs. ${itemTotal.toLocaleString('en-IN')})\n`;
+            });
+
+            const msg = `*NEW ORDER - S.R. AYURVEDA*\n\n` +
+                        `*Customer Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}, ${state} - ${pincode}\nPayment Method: ${payment}\n\n` +
+                        `*Ordered Items:*\n${itemsListText}\n` +
+                        `*Total Amount:* Rs. ${total.toLocaleString('en-IN')}.00`;
+
+            alert(`Thank you, ${name}! Your order has been placed successfully.`);
+            
+            // Clear Cart
+            cart = [];
+            saveCart();
+            closeCheckoutModal();
+
+            // WhatsApp Message Trigger
+            window.open(`https://wa.me/918750338234?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         // MODAL FUNCTIONS
@@ -794,6 +909,9 @@
             addToCart(prod.id, prod.name, prod.price, qty);
             closeProductModal();
         }
+
+        // Initialize UI on Load
+        document.addEventListener('DOMContentLoaded', updateCartUI);
     </script>
 </body>
 </html>
