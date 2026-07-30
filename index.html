@@ -287,10 +287,14 @@
 <!-- Featured Single Product Spotlight Section -->
 <section class="py-16 bg-white border-y border-gray-200">
   <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+    <!-- Left Column: Product Image -->
     <div class="bg-amber-50/60 rounded-2xl border border-amber-200 text-center relative cursor-pointer hover:border-emerald-600 transition overflow-hidden h-80" onclick="openProductModal(5)">
       <span class="bg-emerald-800 text-white text-xs font-bold px-3 py-1 rounded-full absolute top-4 left-4 z-10">Spotlight Offer</span>
+      <!-- SAHI IMAGE PATH YAHAN DALEIN (e.g., images/insul-x-gold.jpg ya Online URL) -->
       <img src="insul-x-gold.jpg" alt="SR Ayurveda Insul-x Gold" class="w-full h-full object-cover">
     </div>
+
+    <!-- Right Column: Details & Buttons -->
     <div class="space-y-5">
       <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest">Featured Medicine Spotlight</span>
       <h2 class="text-3xl font-extrabold text-gray-900 hover:text-emerald-800 transition cursor-pointer" onclick="openProductModal(5)">Insul-x Gold</h2>
@@ -312,23 +316,22 @@
           <p class="text-xs text-gray-600 mt-0.5">Take 2 capsules daily or as suggested by your doctor.</p>
         </div>
       </div>
+
+      <!-- Quantity & Buy Buttons Ko Right Side Container Ke Andar Shift Kiya Gaya Hai -->
+      <div class="flex items-center gap-4 pt-2">
+        <div class="flex border border-gray-300 rounded-lg overflow-hidden">
+          <button class="px-3 py-2 bg-gray-100 hover:bg-gray-200">-</button>
+          <input type="number" value="1" class="w-12 text-center border-none focus:outline-none">
+          <button class="px-3 py-2 bg-gray-100 hover:bg-gray-200">+</button>
+        </div>
+        <button class="flex-1 bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 px-6 rounded-lg transition">Add to Cart</button>
+        <button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition">Buy It Now</button>
+      </div>
+
     </div>
   </div>
 </section>
-                <!-- Quantity & Buy Buttons -->
-                <div class="flex items-center gap-4">
-                    <div class="flex border border-gray-300 rounded-lg overflow-hidden">
-                        <button onclick="decreaseQty('product-qty')" class="px-3 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 font-bold select-none">-</button>
-                        <input type="text" id="product-qty" value="1" readonly class="w-12 text-center text-sm font-bold border-x border-gray-300 focus:outline-none bg-white">
-                        <button onclick="increaseQty('product-qty')" class="px-3 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 font-bold select-none">+</button>
-                    </div>
-                    <button onclick="addSpotlightToCart()" class="flex-1 bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 rounded-lg text-sm shadow transition">Add to Cart</button>
-                    <button onclick="buyNowSpotlight()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold py-3 rounded-lg text-sm shadow transition">Buy It Now</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Why Choose S.R. Ayurveda -->
     <section class="py-16 bg-emerald-900 text-white">
         <div class="container mx-auto px-4">
