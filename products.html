@@ -477,7 +477,7 @@
             6: {
                 name: "POWER OF THOR POWDER",
                 category: "IMMUNITY & STRENGTH",
-                price: 2,990,
+                price: 2990,
                 originalPrice: 4999,
                 image: "shilajit-gu.jpg",
                 description: "100% pure Himalayan Shilajit Resin packed with 80+ essential minerals and high Fulvic Acid content. A natural superfood designed to enhance immunity, stamina, cognitive focus, and overall vitality.",
@@ -487,14 +487,14 @@
                     "Promotes natural anti-aging and skin health",
                     "Dramatically improves physical and mental performance"
                 ],
-                ingredients: "100% Pure Himalayan Raw Shilajit Resin (Lab Tested)",
-                dosage: "Dissolve a pea-sized amount (300-500mg) in warm water or milk daily."
-            }
-        };
+               ingredients: "100% Pure Himalayan Raw Shilajit Resin (Lab Tested)",
+        dosage: "Dissolve a pea-sized amount (300-500mg) in warm water or milk daily."
+    }
+};
 
-        let currentQty = 1;
-        let currentActiveProductId = null;
-        let cart = JSON.parse(localStorage.getItem('sr_ayurveda_cart')) || [];
+let currentQty = 1;
+let currentActiveProductId = null;
+let cart = JSON.parse(localStorage.getItem('sr_ayurveda_cart')) || [];
 
         function saveCart() {
             localStorage.setItem('sr_ayurveda_cart', JSON.stringify(cart));
