@@ -29,6 +29,14 @@
         .modal-animate {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+        /* Slider Transition */
+        .slide-item {
+            display: none;
+            transition: opacity 0.8s ease-in-out;
+        }
+        .slide-item.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
@@ -119,9 +127,9 @@
         </div>
     </div>
 
-    <!-- Hero Banner Section -->
+    <!-- Hero Banner Section with 3-sec Auto Sliding Gallery -->
     <section id="home" class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-950 text-white py-16 md:py-24 relative overflow-hidden">
-        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10">
             <div class="space-y-6">
                 <span class="bg-amber-500 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">100% Pure & Herbal</span>
                 <h1 class="text-3xl md:text-5xl font-black leading-tight">Unleash Your Natural Health & Vitality</h1>
@@ -131,12 +139,18 @@
                     <a href="#categories" class="bg-transparent border-2 border-white hover:bg-white hover:text-emerald-900 text-white font-bold px-8 py-3.5 rounded-lg text-base transition">Explore Categories</a>
                 </div>
             </div>
-            <div class="flex justify-center">
-                <div class="w-72 h-72 md:w-96 md:h-96 bg-emerald-700/50 rounded-full flex items-center justify-center border-4 border-amber-400/30 p-4 backdrop-blur-sm">
-                    <div class="text-center p-6 bg-emerald-950/80 rounded-2xl border border-emerald-600">
-                        <i class="fa-solid fa-leaf text-amber-400 text-5xl mb-3"></i>
-                        <h3 class="text-xl font-bold">100% Herbal & Authentic</h3>
-                        <p class="text-xs text-gray-300 mt-2">Certified Pure Ingredients • No Harmful Chemicals • GMP Approved</p>
+            
+            <!-- Sliding Gallery (3 Images, Auto slide every 3 seconds) -->
+            <div class="flex justify-center items-center w-full">
+                <div class="w-full max-w-md h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-amber-400/30 relative">
+                    <div class="slide-item active w-full h-full">
+                        <img src="banner1.jpg" alt="Ayurvedic Banner 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item w-full h-full">
+                        <img src="banner2.jpg" alt="Ayurvedic Banner 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item w-full h-full">
+                        <img src="banner3.jpg" alt="Ayurvedic Banner 3" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -290,7 +304,6 @@
     <!-- Left Column: Product Image -->
     <div class="bg-amber-50/60 rounded-2xl border border-amber-200 text-center relative cursor-pointer hover:border-emerald-600 transition overflow-hidden h-80" onclick="openProductModal(5)">
       <span class="bg-emerald-800 text-white text-xs font-bold px-3 py-1 rounded-full absolute top-4 left-4 z-10">Spotlight Offer</span>
-      <!-- SAHI IMAGE PATH YAHAN DALEIN (e.g., images/insul-x-gold.jpg ya Online URL) -->
       <img src="insul-x.jpg" alt="SR Ayurveda Insul-x Gold" class="w-full h-full object-cover">
     </div>
 
@@ -317,15 +330,14 @@
         </div>
       </div>
 
-      <!-- Quantity & Buy Buttons Ko Right Side Container Ke Andar Shift Kiya Gaya Hai -->
       <div class="flex items-center gap-4 pt-2">
         <div class="flex border border-gray-300 rounded-lg overflow-hidden">
-          <button class="px-3 py-2 bg-gray-100 hover:bg-gray-200">-</button>
-          <input type="number" value="1" class="w-12 text-center border-none focus:outline-none">
-          <button class="px-3 py-2 bg-gray-100 hover:bg-gray-200">+</button>
+          <button onclick="decreaseQty('spotlight-qty')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200">-</button>
+          <input type="number" id="spotlight-qty" value="1" class="w-12 text-center border-none focus:outline-none" readonly>
+          <button onclick="increaseQty('spotlight-qty')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200">+</button>
         </div>
-        <button class="flex-1 bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 px-6 rounded-lg transition">Add to Cart</button>
-        <button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition">Buy It Now</button>
+        <button onclick="addSpotlightToCart()" class="flex-1 bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 px-6 rounded-lg transition">Add to Cart</button>
+        <button onclick="buyNowSpotlight()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition">Buy It Now</button>
       </div>
 
     </div>
@@ -555,7 +567,7 @@
                         <span id="checkout-total-amount">Rs. 0.00</span>
                     </div>
                 </div>
-                <button type="submit" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-extrabold py-3 rounded-lg shadow-md transition text-sm">
+                <button type="submit" id="submit-btn" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-extrabold py-3 rounded-lg shadow-md transition text-sm">
                     Confirm & Place Order
                 </button>
             </form>
@@ -564,6 +576,18 @@
 
     <!-- CART JAVASCRIPT & MODAL LOGIC -->
     <script>
+        // Automatic Hero Slider Functionality (3-sec interval)
+        let currentSlide = 0;
+        function autoSlide() {
+            const slides = document.querySelectorAll('.slide-item');
+            if (slides.length === 0) return;
+            
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(autoSlide, 3000);
+
         // Load cart from LocalStorage on page start
         let cart = JSON.parse(localStorage.getItem('sr_ayurveda_cart')) || [];
 
@@ -699,13 +723,14 @@
         }
 
         function addSpotlightToCart() {
-            const qtyInput = document.getElementById('product-qty');
+            const qtyInput = document.getElementById('spotlight-qty');
             const qty = parseInt(qtyInput.value) || 1;
-            addToCart(5, 'Power of thor Plus Capsule', 2250, qty);
+            addToCart(5, 'Insul-x Gold', 2490, qty);
         }
 
         function buyNowSpotlight() {
             addSpotlightToCart();
+            proceedToCheckout();
         }
 
         function updateCartUI() {
@@ -808,8 +833,14 @@
             }, 300);
         }
 
+        // INTEGRATED CRM ORDER SUBMISSION FUNCTION
         function submitOrder(e) {
             e.preventDefault();
+            
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+            btn.innerText = 'Processing Order...';
+
             const name = document.getElementById('cust-name').value;
             const phone = document.getElementById('cust-phone').value;
             const address = document.getElementById('cust-address').value;
@@ -817,28 +848,56 @@
             const state = document.getElementById('cust-state').value;
             const payment = document.getElementById('cust-payment').value;
 
-            let itemsListText = '';
-            let total = 0;
+            let itemsSummary = [];
+            let totalAmount = 0;
+            
             cart.forEach(item => {
                 let itemTotal = item.price * item.qty;
-                total += itemTotal;
-                itemsListText += `• ${item.name} x ${item.qty} (Rs. ${itemTotal.toLocaleString('en-IN')})\n`;
+                totalAmount += itemTotal;
+                itemsSummary.push(`${item.name} (Qty: ${item.qty})`);
             });
 
-            const msg = `*NEW ORDER - S.R. AYURVEDA*\n\n` +
-                        `*Customer Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}, ${state} - ${pincode}\nPayment Method: ${payment}\n\n` +
-                        `*Ordered Items:*\n${itemsListText}\n` +
-                        `*Total Amount:* Rs. ${total.toLocaleString('en-IN')}.00`;
+            // LeadVertex CRM Integration
+            const crmUrl = "https://powerofthorplus.leadvertex.ru/api/webmaster/v2/addOrder.html?webmasterID=7&token=Shiv%402026";
 
-            alert(`Thank you, ${name}! Your order has been placed successfully.`);
-            
-            // Clear Cart
-            cart = [];
-            saveCart();
-            closeCheckoutModal();
+            const formData = new URLSearchParams();
+            formData.append('fio', name);
+            formData.append('phone', phone);
+            formData.append('address', address);
+            formData.append('postIndex', pincode);
+            formData.append('region', state);
+            formData.append('total', totalAmount);
+            formData.append('comment', `Payment Method: ${payment} | Ordered Items: ${itemsSummary.join(', ')}`);
+            formData.append('domain', window.location.hostname || 'S.R.ayurveda.in');
+            formData.append('timezone', new Date().getTimezoneOffset());
 
-            // WhatsApp Message Trigger
-            window.open(`https://wa.me/918750338234?text=${encodeURIComponent(msg)}`, '_blank');
+            fetch(crmUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData.toString()
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(`Thank you, ${name}! Your order has been placed successfully.`);
+                
+                // Clear Cart and Close Modal
+                cart = [];
+                saveCart();
+                closeCheckoutModal();
+                btn.disabled = false;
+                btn.innerText = 'Confirm & Place Order';
+            })
+            .catch(error => {
+                console.error('CRM Error:', error);
+                alert(`Thank you, ${name}! Your order request has been received.`);
+                cart = [];
+                saveCart();
+                closeCheckoutModal();
+                btn.disabled = false;
+                btn.innerText = 'Confirm & Place Order';
+            });
         }
 
         // MODAL FUNCTIONS
