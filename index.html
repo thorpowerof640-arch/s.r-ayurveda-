@@ -29,13 +29,21 @@
         .modal-animate {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
-        /* Slider Transition */
-        .slide-item {
-            display: none;
-            transition: opacity 0.8s ease-in-out;
+        /* Background Slide Animation (Smooth Fade Transition) */
+        .bg-slide-item {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out, transform 8s ease-out;
+            z-index: 0;
+            transform: scale(1);
         }
-        .slide-item.active {
-            display: block;
+        .bg-slide-item.active {
+            opacity: 1;
+            transform: scale(1.05); /* Slight zoom effect on active background */
         }
     </style>
 </head>
@@ -127,31 +135,39 @@
         </div>
     </div>
 
-    <!-- Hero Banner Section with 3-sec Auto Sliding Gallery -->
-    <section id="home" class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-950 text-white py-16 md:py-24 relative overflow-hidden">
-        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10">
-            <div class="space-y-6">
-                <span class="bg-amber-500 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">100% Pure & Herbal</span>
-                <h1 class="text-3xl md:text-5xl font-black leading-tight">Unleash Your Natural Health & Vitality</h1>
-                <p class="text-gray-200 text-base md:text-lg">Discover authentic Ayurvedic formulations made with premium natural herbs for strength, immunity, diabetes care, joint pain relief, and holistic wellness.</p>
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="#products" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold px-8 py-3.5 rounded-lg text-base shadow-lg transition">Shop Bestsellers</a>
-                    <a href="#categories" class="bg-transparent border-2 border-white hover:bg-white hover:text-emerald-900 text-white font-bold px-8 py-3.5 rounded-lg text-base transition">Explore Categories</a>
-                </div>
-            </div>
+    <!-- FULL BACKGROUND HERO BANNER SECTION WITH SLIDER -->
+    <section id="home" class="relative text-white min-h-[85vh] md:min-h-screen flex items-center overflow-hidden">
+        <!-- Background Slider Gallery (Covers Full Section) -->
+        <div class="absolute inset-0 z-0">
+            <img src="banner1.jpg" alt="Hero Background 1" class="bg-slide-item active">
+            <img src="banner2.jpg" alt="Hero Background 2" class="bg-slide-item">
+            <img src="banner3.jpg" alt="Hero Background 3" class="bg-slide-item">
             
-            <!-- Sliding Gallery (3 Images, Auto slide every 3 seconds) -->
-            <div class="flex justify-center items-center w-full">
-                <div class="w-full max-w-md h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-amber-400/30 relative">
-                    <div class="slide-item active w-full h-full">
-                        <img src="banner1.jpg" alt="Ayurvedic Banner 1" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item w-full h-full">
-                        <img src="banner2.jpg" alt="Ayurvedic Banner 2" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item w-full h-full">
-                        <img src="banner3.jpg" alt="Ayurvedic Banner 3" class="w-full h-full object-cover">
-                    </div>
+            <!-- Dark Overlay Filter for High Text Readability -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30 z-10"></div>
+        </div>
+
+        <!-- Hero Content (Overlay Content) -->
+        <div class="container mx-auto px-6 py-20 relative z-20">
+            <div class="max-w-2xl space-y-6">
+                <div>
+                    <span class="bg-amber-500/90 text-emerald-950 text-xs md:text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wider inline-block shadow-md">
+                        🌿 100% Pure & Herbal
+                    </span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-black leading-tight tracking-tight drop-shadow-md">
+                    Unleash Your Natural Health & Vitality
+                </h1>
+                <p class="text-gray-200 text-base md:text-xl font-light leading-relaxed drop-shadow">
+                    Discover authentic Ayurvedic formulations made with premium natural herbs for strength, immunity, diabetes care, joint pain relief, and holistic wellness.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#products" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 font-extrabold px-8 py-4 rounded-xl text-base shadow-xl hover:scale-105 transition transform">
+                        Shop Bestsellers
+                    </a>
+                    <a href="#categories" class="bg-white/10 backdrop-blur-md border border-white/40 hover:bg-white hover:text-emerald-900 text-white font-bold px-8 py-4 rounded-xl text-base shadow-lg hover:scale-105 transition transform">
+                        Explore Categories
+                    </a>
                 </div>
             </div>
         </div>
@@ -298,51 +314,51 @@
         </div>
     </section>
 
-<!-- Featured Single Product Spotlight Section -->
-<section class="py-16 bg-white border-y border-gray-200">
-  <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-    <!-- Left Column: Product Image -->
-    <div class="bg-amber-50/60 rounded-2xl border border-amber-200 text-center relative cursor-pointer hover:border-emerald-600 transition overflow-hidden h-80" onclick="openProductModal(5)">
-      <span class="bg-emerald-800 text-white text-xs font-bold px-3 py-1 rounded-full absolute top-4 left-4 z-10">Spotlight Offer</span>
-      <img src="insul-x.jpg" alt="SR Ayurveda Insul-x Gold" class="w-full h-full object-cover">
-    </div>
-
-    <!-- Right Column: Details & Buttons -->
-    <div class="space-y-5">
-      <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest">Featured Medicine Spotlight</span>
-      <h2 class="text-3xl font-extrabold text-gray-900 hover:text-emerald-800 transition cursor-pointer" onclick="openProductModal(5)">Insul-x Gold</h2>
-      <div class="flex items-center gap-3">
-        <span class="text-xs text-gray-400 line-through text-lg">Rs. 4,500.00</span>
-        <span class="text-2xl font-black text-emerald-900">Rs. 2,490.00</span>
-        <span class="text-xs bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded">SAVE 50%</span>
-      </div>
-      <p class="text-xs text-gray-500">Taxes included. Free shipping available on prepaid orders.</p>
-
-      <!-- Detailed Medicine Specs -->
-      <div class="border-t border-b border-gray-100 py-4 space-y-3">
-        <div>
-          <h4 class="text-xs font-bold text-emerald-900 uppercase">Key Ingredients:</h4>
-          <p class="text-xs text-gray-600 mt-0.5">Gymnema Sylvestre, Syzygium cuminii, Emblica Officinalis, Withania Somnifera, Ocimum sanctum, Withania Coagulans, Piper Longum, Momordica Charantia, Trigonella, Zingiber officinale, Cinnamomum zeylanicum.</p>
+    <!-- Featured Single Product Spotlight Section -->
+    <section class="py-16 bg-white border-y border-gray-200">
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+        <!-- Left Column: Product Image -->
+        <div class="bg-amber-50/60 rounded-2xl border border-amber-200 text-center relative cursor-pointer hover:border-emerald-600 transition overflow-hidden h-80" onclick="openProductModal(5)">
+          <span class="bg-emerald-800 text-white text-xs font-bold px-3 py-1 rounded-full absolute top-4 left-4 z-10">Spotlight Offer</span>
+          <img src="insul-x.jpg" alt="SR Ayurveda Insul-x Gold" class="w-full h-full object-cover">
         </div>
-        <div>
-          <h4 class="text-xs font-bold text-emerald-900 uppercase">Dosage & Usage:</h4>
-          <p class="text-xs text-gray-600 mt-0.5">Take 2 capsules daily or as suggested by your doctor.</p>
+
+        <!-- Right Column: Details & Buttons -->
+        <div class="space-y-5">
+          <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest">Featured Medicine Spotlight</span>
+          <h2 class="text-3xl font-extrabold text-gray-900 hover:text-emerald-800 transition cursor-pointer" onclick="openProductModal(5)">Insul-x Gold</h2>
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400 line-through text-lg">Rs. 4,500.00</span>
+            <span class="text-2xl font-black text-emerald-900">Rs. 2,490.00</span>
+            <span class="text-xs bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded">SAVE 50%</span>
+          </div>
+          <p class="text-xs text-gray-500">Taxes included. Free shipping available on prepaid orders.</p>
+
+          <!-- Detailed Medicine Specs -->
+          <div class="border-t border-b border-gray-100 py-4 space-y-3">
+            <div>
+              <h4 class="text-xs font-bold text-emerald-900 uppercase">Key Ingredients:</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Gymnema Sylvestre, Syzygium cuminii, Emblica Officinalis, Withania Somnifera, Ocimum sanctum, Withania Coagulans, Piper Longum, Momordica Charantia, Trigonella, Zingiber officinale, Cinnamomum zeylanicum.</p>
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-emerald-900 uppercase">Dosage & Usage:</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Take 2 capsules daily or as suggested by your doctor.</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 pt-2">
+            <div class="flex border border-gray-300 rounded-lg overflow-hidden">
+              <button onclick="decreaseQty('spotlight-qty')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200">-</button>
+              <input type="number" id="spotlight-qty" value="1" class="w-12 text-center border-none focus:outline-none" readonly>
+              <button onclick="increaseQty('spotlight-qty')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200">+</button>
+            </div>
+            <button onclick="addSpotlightToCart()" class="flex-1 bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 px-6 rounded-lg transition">Add to Cart</button>
+            <button onclick="buyNowSpotlight()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition">Buy It Now</button>
+          </div>
+
         </div>
       </div>
-
-      <div class="flex items-center gap-4 pt-2">
-        <div class="flex border border-gray-300 rounded-lg overflow-hidden">
-          <button onclick="decreaseQty('spotlight-qty')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200">-</button>
-          <input type="number" id="spotlight-qty" value="1" class="w-12 text-center border-none focus:outline-none" readonly>
-          <button onclick="increaseQty('spotlight-qty')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200">+</button>
-        </div>
-        <button onclick="addSpotlightToCart()" class="flex-1 bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 px-6 rounded-lg transition">Add to Cart</button>
-        <button onclick="buyNowSpotlight()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition">Buy It Now</button>
-      </div>
-
-    </div>
-  </div>
-</section>
+    </section>
     
     <!-- Why Choose S.R. Ayurveda -->
     <section class="py-16 bg-emerald-900 text-white">
@@ -574,19 +590,19 @@
         </div>
     </div>
 
-    <!-- CART JAVASCRIPT & MODAL LOGIC -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Automatic Hero Slider Functionality (3-sec interval)
-        let currentSlide = 0;
-        function autoSlide() {
-            const slides = document.querySelectorAll('.slide-item');
-            if (slides.length === 0) return;
+        // Smooth Full Background Slider Switcher (4 Seconds Transition)
+        let currentBgSlide = 0;
+        function autoBgSlide() {
+            const bgSlides = document.querySelectorAll('.bg-slide-item');
+            if (bgSlides.length === 0) return;
             
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+            bgSlides[currentBgSlide].classList.remove('active');
+            currentBgSlide = (currentBgSlide + 1) % bgSlides.length;
+            bgSlides[currentBgSlide].classList.add('active');
         }
-        setInterval(autoSlide, 3000);
+        setInterval(autoBgSlide, 4000);
 
         // Load cart from LocalStorage on page start
         let cart = JSON.parse(localStorage.getItem('sr_ayurveda_cart')) || [];
