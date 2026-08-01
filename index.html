@@ -12,6 +12,7 @@
       gtag('js', new Date());
 
       gtag('config', 'G-M8BR0W6P60');
+      gtag('config', 'AW-18341749762');
     </script>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -599,6 +600,19 @@
         </div>
     </div>
 
+    <!-- THANK YOU MODAL (SUCCESS PAGE) -->
+    <div id="thankyou-modal-overlay" class="fixed inset-0 bg-black/70 z-[60] hidden opacity-0 transition-opacity"></div>
+    <div id="thankyou-modal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl z-[60] w-11/12 max-w-md hidden opacity-0 modal-animate p-8 text-center">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h2 class="text-2xl font-black text-emerald-900 mb-2">Thank You For Your Order!</h2>
+        <p class="text-xs text-gray-600 mb-6">Aapka order successfully place ho gaya hai. Humari team aapse jald hi contact karegi.</p>
+        <button onclick="closeThankYouModal()" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 rounded-lg shadow-md transition text-sm">
+            Continue Shopping
+        </button>
+    </div>
+
     <!-- JAVASCRIPT LOGIC -->
     <script>
         // Smooth Full Background Slider Switcher (4 Seconds Transition)
@@ -858,7 +872,29 @@
             }, 300);
         }
 
-        // INTEGRATED CRM ORDER SUBMISSION FUNCTION
+        function showThankYouModal() {
+            const modal = document.getElementById('thankyou-modal');
+            const overlay = document.getElementById('thankyou-modal-overlay');
+            modal.classList.remove('hidden');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                overlay.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeThankYouModal() {
+            const modal = document.getElementById('thankyou-modal');
+            const overlay = document.getElementById('thankyou-modal-overlay');
+            modal.classList.add('opacity-0');
+            overlay.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                overlay.classList.add('hidden');
+            }, 300);
+        }
+
+        // INTEGRATED CRM ORDER SUBMISSION FUNCTION WITH GOOGLE CONVERSION TRACKING
         function submitOrder(e) {
             e.preventDefault();
             
@@ -896,6 +932,27 @@
             formData.append('domain', window.location.hostname || 'S.R.ayurveda.in');
             formData.append('timezone', new Date().getTimezoneOffset());
 
+            const handleSuccess = () => {
+                // Fire Google Ads Conversion Event Snippet
+                if (typeof gtag === 'function') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-18341749762/KW7DCMGJg9ocEILIg6pE',
+                        'value': totalAmount,
+                        'currency': 'INR'
+                    });
+                }
+
+                // Clear Cart, Reset Form & Show Thank You Screen
+                cart = [];
+                saveCart();
+                document.getElementById('order-form').reset();
+                closeCheckoutModal();
+                btn.disabled = false;
+                btn.innerText = 'Confirm & Place Order';
+                
+                showThankYouModal();
+            };
+
             fetch(crmUrl, {
                 method: 'POST',
                 headers: {
@@ -905,23 +962,11 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert(`Thank you, ${name}! Your order has been placed successfully.`);
-                
-                // Clear Cart and Close Modal
-                cart = [];
-                saveCart();
-                closeCheckoutModal();
-                btn.disabled = false;
-                btn.innerText = 'Confirm & Place Order';
+                handleSuccess();
             })
             .catch(error => {
                 console.error('CRM Error:', error);
-                alert(`Thank you, ${name}! Your order request has been received.`);
-                cart = [];
-                saveCart();
-                closeCheckoutModal();
-                btn.disabled = false;
-                btn.innerText = 'Confirm & Place Order';
+                handleSuccess();
             });
         }
 
