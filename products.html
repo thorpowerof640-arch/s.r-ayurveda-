@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Products - S.R. Ayurveda</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8BR0W6P60"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M8BR0W6P60');
+      gtag('config', 'AW-18341749762');
+    </script>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .modal-animate {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
@@ -152,7 +167,7 @@
                         </div>
                     </div>
                     <div class="p-5 pt-0">
-                        <button onclick="addToCart('POWER OF THOR CAPSULES', 2250)" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white text-sm font-bold py-2.5 rounded-lg transition">
+                        <button onclick="addToCart('POWER OF THOR CAPSULES', 2290)" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white text-sm font-bold py-2.5 rounded-lg transition">
                             Add to Cart
                         </button>
                     </div>
@@ -179,7 +194,7 @@
                         </div>
                     </div>
                     <div class="p-5 pt-0">
-                        <button onclick="addToCart('POWER OF THOR RED CAPSULE', 2250)" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white text-sm font-bold py-2.5 rounded-lg transition">
+                        <button onclick="addToCart('POWER OF THOR RED CAPSULE', 2990)" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white text-sm font-bold py-2.5 rounded-lg transition">
                             Add to Cart
                         </button>
                     </div>
@@ -196,13 +211,13 @@
                             </div>
                         </div>
                         <div class="p-5">
-                        <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">DIABETES CARE & SUGAR CONTROL</span>
-                        <h3 class="font-bold text-gray-900 text-base mt-1 group-hover:text-emerald-800 transition">Insul-x Gold</h3>
-                        <p class="text-xs text-gray-500 mt-2 line-clamp-2">100% Natural Ayurvedic capsules for sugar control & diabetic relief with 800mg blend.</p>
-                        <div class="mt-4 flex items-baseline gap-2">
-                            <span class="text-xs text-gray-400 line-through">Rs. 3,500.00</span>
-                            <span class="text-lg font-extrabold text-emerald-950">Rs. 2,490.00</span>
-                        </div>
+                            <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">DIABETES CARE & SUGAR CONTROL</span>
+                            <h3 class="font-bold text-gray-900 text-base mt-1 group-hover:text-emerald-800 transition">Insul-x Gold</h3>
+                            <p class="text-xs text-gray-500 mt-2 line-clamp-2">100% Natural Ayurvedic capsules for sugar control & diabetic relief with 800mg blend.</p>
+                            <div class="mt-4 flex items-baseline gap-2">
+                                <span class="text-xs text-gray-400 line-through">Rs. 3,500.00</span>
+                                <span class="text-lg font-extrabold text-emerald-950">Rs. 2,490.00</span>
+                            </div>
                         </div>
                     </div>
                     <div class="p-5 pt-0">
@@ -228,12 +243,12 @@
                             <p class="text-xs text-gray-500 mt-2 line-clamp-2">100% Himalayan Shilajit Resin for stamina, vitality and immune strength.</p>
                             <div class="mt-4 flex items-baseline gap-2">
                                 <span class="text-xs text-gray-400 line-through">Rs. 4,999.00</span>
-                                <span class="text-lg font-extrabold text-emerald-950">Rs. 2,990</span>
+                                <span class="text-lg font-extrabold text-emerald-950">Rs. 2,990.00</span>
                             </div>
                         </div>
                     </div>
                     <div class="p-5 pt-0">
-                        <button onclick="addToCart('PURE SHILAJIT RESIN', 1499)" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white text-sm font-bold py-2.5 rounded-lg transition">
+                        <button onclick="addToCart('POWER OF THOR POWDER', 2990)" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white text-sm font-bold py-2.5 rounded-lg transition">
                             Add to Cart
                         </button>
                     </div>
@@ -384,11 +399,24 @@
                     <span>Total Amount:</span>
                     <span id="checkout-prod-total">Rs. 0.00</span>
                 </div>
-                <button type="submit" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white font-bold py-3 rounded-lg shadow transition">
+                <button type="submit" id="submit-btn-prod" class="w-full bg-emerald-900 hover:bg-emerald-950 text-white font-bold py-3 rounded-lg shadow transition">
                     Place Order Now
                 </button>
             </form>
         </div>
+    </div>
+
+    <!-- THANK YOU MODAL (SUCCESS PAGE) -->
+    <div id="thankyou-modal-overlay" class="fixed inset-0 bg-black/70 z-[60] hidden opacity-0 transition-opacity"></div>
+    <div id="thankyou-modal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl z-[60] w-11/12 max-w-md hidden opacity-0 modal-animate p-8 text-center">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h2 class="text-2xl font-black text-emerald-900 mb-2">Thank You For Your Order!</h2>
+        <p class="text-xs text-gray-600 mb-6">Aapka order successfully place ho gaya hai. Humari team aapse jald hi contact karegi.</p>
+        <button onclick="closeThankYouModal()" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 rounded-lg shadow-md transition text-sm">
+            Continue Shopping
+        </button>
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
@@ -479,7 +507,7 @@
                 category: "IMMUNITY & STRENGTH",
                 price: 2990,
                 originalPrice: 4999,
-                image: "shilajit-gu.jpg",
+                image: "shilajit-resin.jpg",
                 description: "100% pure Himalayan Shilajit Resin packed with 80+ essential minerals and high Fulvic Acid content. A natural superfood designed to enhance immunity, stamina, cognitive focus, and overall vitality.",
                 benefits: [
                     "Rich in 80+ trace minerals and 80% Fulvic Acid",
@@ -487,14 +515,14 @@
                     "Promotes natural anti-aging and skin health",
                     "Dramatically improves physical and mental performance"
                 ],
-               ingredients: "100% Pure Himalayan Raw Shilajit Resin (Lab Tested)",
-        dosage: "Dissolve a pea-sized amount (300-500mg) in warm water or milk daily."
-    }
-};
+                ingredients: "100% Pure Himalayan Raw Shilajit Resin (Lab Tested)",
+                dosage: "Dissolve a pea-sized amount (300-500mg) in warm water or milk daily."
+            }
+        };
 
-let currentQty = 1;
-let currentActiveProductId = null;
-let cart = JSON.parse(localStorage.getItem('sr_ayurveda_cart')) || [];
+        let currentQty = 1;
+        let currentActiveProductId = null;
+        let cart = JSON.parse(localStorage.getItem('sr_ayurveda_cart')) || [];
 
         function saveCart() {
             localStorage.setItem('sr_ayurveda_cart', JSON.stringify(cart));
@@ -616,8 +644,36 @@ let cart = JSON.parse(localStorage.getItem('sr_ayurveda_cart')) || [];
             document.getElementById('checkout-modal').classList.add('hidden');
         }
 
+        function showThankYouModal() {
+            const modal = document.getElementById('thankyou-modal');
+            const overlay = document.getElementById('thankyou-modal-overlay');
+            modal.classList.remove('hidden');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                overlay.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeThankYouModal() {
+            const modal = document.getElementById('thankyou-modal');
+            const overlay = document.getElementById('thankyou-modal-overlay');
+            modal.classList.add('opacity-0');
+            overlay.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                overlay.classList.add('hidden');
+            }, 300);
+        }
+
+        // INTEGRATED LEADVERTEX CRM ORDER SUBMISSION FUNCTION WITH GOOGLE ADS CONVERSION
         function submitProductOrder(e) {
             e.preventDefault();
+            
+            const btn = document.getElementById('submit-btn-prod');
+            btn.disabled = true;
+            btn.innerText = 'Processing Order...';
+
             const name = document.getElementById('cust-name-prod').value;
             const phone = document.getElementById('cust-phone-prod').value;
             const address = document.getElementById('cust-address-prod').value;
@@ -625,26 +681,66 @@ let cart = JSON.parse(localStorage.getItem('sr_ayurveda_cart')) || [];
             const state = document.getElementById('cust-state-prod').value;
             const payment = document.getElementById('cust-pay-prod').value;
 
-            let itemsListText = '';
-            let total = 0;
+            let itemsSummary = [];
+            let totalAmount = 0;
+            
             cart.forEach(item => {
                 let itemTotal = item.price * item.qty;
-                total += itemTotal;
-                itemsListText += `• ${item.name} x ${item.qty} (Rs. ${itemTotal.toLocaleString('en-IN')})\n`;
+                totalAmount += itemTotal;
+                itemsSummary.push(`${item.name} (Qty: ${item.qty})`);
             });
 
-            const msg = `*NEW ORDER - S.R. AYURVEDA*\n\n` +
-                        `*Customer Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}, ${state} - ${pincode}\nPayment Method: ${payment}\n\n` +
-                        `*Ordered Items:*\n${itemsListText}\n` +
-                        `*Total Amount:* Rs. ${total.toLocaleString('en-IN')}.00`;
+            // LeadVertex CRM Integration
+            const crmUrl = "https://powerofthorplus.leadvertex.ru/api/webmaster/v2/addOrder.html?webmasterID=7&token=Shiv%402026";
 
-            alert(`Thank you, ${name}! Your order has been placed successfully.`);
-            
-            cart = [];
-            saveCart();
-            closeCheckoutModal();
+            const formData = new URLSearchParams();
+            formData.append('fio', name);
+            formData.append('phone', phone);
+            formData.append('address', address);
+            formData.append('postIndex', pincode);
+            formData.append('region', state);
+            formData.append('total', totalAmount);
+            formData.append('comment', `Payment Method: ${payment} | Ordered Items: ${itemsSummary.join(', ')}`);
+            formData.append('domain', window.location.hostname || 'S.R.ayurveda.in');
+            formData.append('timezone', new Date().getTimezoneOffset());
 
-            window.open(`https://wa.me/918750338234?text=${encodeURIComponent(msg)}`, '_blank');
+            const handleSuccess = () => {
+                // Fire Google Ads Conversion Event Snippet
+                if (typeof gtag === 'function') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-18341749762/KW7DCMGJg9ocEILIg6pE',
+                        'value': totalAmount,
+                        'currency': 'INR'
+                    });
+                }
+
+                // Reset Form & Clear Cart
+                cart = [];
+                saveCart();
+                document.getElementById('order-form-product').reset();
+                closeCheckoutModal();
+                btn.disabled = false;
+                btn.innerText = 'Place Order Now';
+                
+                // Show Thank You Popup
+                showThankYouModal();
+            };
+
+            fetch(crmUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData.toString()
+            })
+            .then(response => response.json())
+            .then(data => {
+                handleSuccess();
+            })
+            .catch(error => {
+                console.error('CRM Error:', error);
+                handleSuccess();
+            });
         }
 
         document.addEventListener('DOMContentLoaded', updateCartUI);
