@@ -18,7 +18,7 @@
             line-height: 1.6;
         }
 
-        /* Top Bar */
+        /* Top Announcement Bar */
         .top-bar {
             background: #0f172a;
             color: #f8fafc;
@@ -39,7 +39,7 @@
         .hero h1 {
             font-size: 2rem;
             margin-bottom: 12px;
-            color: #facc15; /* Gold Accent */
+            color: #facc15;
         }
 
         .hero p {
@@ -81,20 +81,30 @@
             margin-bottom: 4px;
         }
 
-        /* Image Styling */
+        /* Image Cards */
         .img-card {
             background: #fff;
-            padding: 10px;
+            padding: 12px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.06);
             margin-bottom: 25px;
             text-align: center;
+            border: 1px solid #e2e8f0;
         }
 
         .img-card img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .img-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 8px;
+            font-weight: 600;
         }
 
         /* Content Section Cards */
@@ -192,7 +202,7 @@
             font-size: 0.95rem;
         }
 
-        .form-group input, .form-group select {
+        .form-group input {
             width: 100%;
             padding: 14px;
             font-size: 1rem;
@@ -248,12 +258,10 @@
 </head>
 <body>
 
-    <!-- Top Announcement Bar -->
     <div class="top-bar">
         🔒 100% Confidential Packing | Cash On Delivery Available
     </div>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Puraane Se Puraani Kamzori Aur Fatigue Ko Sahi Karein!</h1>
         <p>100% Ayurvedic, Certified aur Safe Tarike Se Apni Energy, Strength aur Confidence Ko Wapas Paayein.</p>
@@ -261,7 +269,6 @@
 
     <div class="container">
 
-        <!-- Trust Badges Grid -->
         <div class="trust-grid">
             <div class="trust-item">
                 <span>🏛️</span>
@@ -277,18 +284,23 @@
             </div>
         </div>
 
-        <!-- Banner Image Placeholder -->
+        <!-- IMAGE 1: MAIN PRODUCT IMAGE -->
         <div class="img-card">
-            <img src="https://via.placeholder.com/700x350?text=Govt.+Approved+Male+Wellness+Formula" alt="Product Banner">
+            <img src="product-main.jpg" alt="Main Product Pack">
+            <div class="img-caption">📌 Original Premium Ayurvedic Male Vitality Pack</div>
         </div>
 
-        <!-- Detail Section 1: Kaisi Dawai Hai -->
         <div class="card">
             <h2>Ye Kaisi Dawai Hai Aur Kaise Kaam Karti Hai?</h2>
-            <p>Ye koi chemical-based instant capsule nahi hai jisse side effects hon. Ye ek **Puratan Ayurvedic Formula** hai jo aapke sharir ke andar blood circulation ko improve karta hai, testosterone level ko natural tarike se boost karta hai aur daily energy ko double karta hai.</p>
+            <p>Ye koi chemical-based instant capsule nahi hai jisse side effects hon. Ye ek <strong>Puratan Ayurvedic Formula</strong> hai jo aapke sharir ke andar blood circulation ko improve karta hai, testosterone level ko natural tarike se boost karta hai aur daily energy ko double karta hai.</p>
         </div>
 
-        <!-- Detail Section 2: Ingredients / Jadi-Butiyan -->
+        <!-- IMAGE 2: LIVE PRODUCT IMAGE / CERTIFICATE -->
+        <div class="img-card">
+            <img src="product-live.jpg" alt="Live Product Photo">
+            <div class="img-caption">📸 Live Product Photo & Govt. Approved Certificate</div>
+        </div>
+
         <div class="card">
             <h2>Isme Kaun-Kaun Se Asli Ingredients Hain?</h2>
             <ul class="check-list">
@@ -300,7 +312,12 @@
             </ul>
         </div>
 
-        <!-- Detail Section 3: Kitne Din Mein Result Dikhata Hai -->
+        <!-- IMAGE 3: INGREDIENTS / BENEFITS INFOGRAPHIC -->
+        <div class="img-card">
+            <img src="ingredients.jpg" alt="Ingredients Banner">
+            <div class="img-caption">🌿 Pure Herbal Herbs & Natural Extraction Method</div>
+        </div>
+
         <div class="card">
             <h2>Kaise Dikhata Hai Iska Result? (3-Step Action)</h2>
             <div class="timeline">
@@ -319,18 +336,7 @@
             </div>
         </div>
 
-        <!-- Detail Section 4: Safety & Certification -->
-        <div class="card">
-            <h2>100% Certified Aur Safe Kyun Hai?</h2>
-            <ul class="check-list">
-                <li>GMP (Good Manufacturing Practice) Certified Lab mein taiyar.</li>
-                <li>Koi bhi harmful chemicals ya steroids nahi hain.</li>
-                <li>Sugar, BP ya Normal Age wale log bhi bina kisi side effect ke use kar sakte hain.</li>
-                <li>Discrete Delivery: Packing ke upar kisi product ka naam nahi hota (100% Secret Box).</li>
-            </ul>
-        </div>
-
-        <!-- Order / Lead Form Section -->
+        <!-- ORDER / LEAD FORM -->
         <div class="form-card" id="order-form">
             <h2>Special Discount Ke Liye Form Bharein</h2>
             <p>Apna Sahi Naam aur WhatsApp Mobile Number Dalein. Humari Health Expert Team Aapko Free Call Karke Full Details Degi.</p>
