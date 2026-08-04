@@ -3,265 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Male Wellness & Vitality - Apne Confidence Ko Badhayein</title>
+    <title>Premium Male Energy & Vitality Formula - 100% Natural</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #f4f6f9;
-            color: #333;
+            background-color: #f8fafc;
+            color: #1e293b;
             line-height: 1.6;
         }
 
-        header {
-            background: #111827;
-            color: #fff;
-            padding: 12px 20px;
+        /* Top Bar */
+        .top-bar {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 10px 15px;
             text-align: center;
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
+        /* Hero Header */
         .hero {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: #ffffff;
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px 20px 30px;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 12px;
+            color: #facc15; /* Gold Accent */
         }
 
         .hero p {
             font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 20px auto;
+            max-width: 650px;
+            margin: 0 auto 20px;
             opacity: 0.9;
         }
 
-        .cta-btn {
-            display: inline-block;
-            background-color: #ff4757;
-            color: white;
-            padding: 15px 35px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            border: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .cta-btn:hover {
-            background-color: #e84118;
-            transform: scale(1.02);
-        }
-
+        /* Main Container */
         .container {
-            max-width: 700px;
-            margin: 30px auto;
-            padding: 0 20px;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .image-container {
+        /* Trust Badges Banner */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             text-align: center;
-            margin: 25px 0;
+            margin-bottom: 25px;
         }
 
-        .image-container img {
+        .trust-item {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .trust-item span {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        /* Image Styling */
+        .img-card {
+            background: #fff;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .img-card img {
             max-width: 100%;
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
         }
 
-        .features {
-            background: white;
+        /* Content Section Cards */
+        .card {
+            background: #ffffff;
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            border-left: 5px solid #2563eb;
         }
 
-        .features h2 {
-            color: #1e3c72;
+        .card h2 {
+            color: #1e3a8a;
+            font-size: 1.4rem;
             margin-bottom: 15px;
-            text-align: center;
-            font-size: 1.5rem;
         }
 
-        .feature-list {
+        /* Check List */
+        .check-list {
             list-style: none;
         }
 
-        .feature-list li {
+        .check-list li {
             padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 1.05rem;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 1rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        .feature-list li:last-child {
+        .check-list li:last-child {
             border-bottom: none;
         }
 
-        .feature-list li::before {
+        .check-list li::before {
             content: "✔";
-            color: #2ed573;
+            color: #16a34a;
             font-weight: bold;
-            font-size: 1.2rem;
-            margin-right: 12px;
+            font-size: 1.1rem;
+            margin-right: 10px;
         }
 
-        /* --- FORM STYLES --- */
+        /* Timeline / Result Expectation */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .timeline-item {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .timeline-item h4 {
+            color: #2563eb;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        /* Form Card */
         .form-card {
             background: #ffffff;
-            border: 2px solid #2a5298;
+            border: 2px solid #2563eb;
             border-radius: 16px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin: 30px 0;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+            margin-top: 30px;
         }
 
         .form-card h2 {
-            color: #1e3c72;
+            color: #1e3a8a;
             text-align: center;
-            margin-bottom: 8px;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
         }
 
         .form-card p {
             text-align: center;
-            color: #666;
-            font-size: 0.95rem;
+            color: #64748b;
+            font-size: 0.9rem;
             margin-bottom: 20px;
         }
 
         .form-group {
-            margin-bottom: 18px;
-            text-align: left;
+            margin-bottom: 15px;
         }
 
         .form-group label {
             display: block;
             font-weight: 600;
-            margin-bottom: 6px;
-            color: #333;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
         }
 
-        .form-group input {
+        .form-group input, .form-group select {
             width: 100%;
             padding: 14px;
             font-size: 1rem;
-            border: 1px solid #ccc;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
             outline: none;
-            transition: border-color 0.2s;
         }
 
         .form-group input:focus {
-            border-color: #2a5298;
-            box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
+            border-color: #2563eb;
         }
 
-        .badge-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
+        /* Order Button */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            padding: 16px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .delivery-info {
+            text-align: center;
             margin-top: 15px;
             font-size: 0.85rem;
-            color: #555;
+            color: #475569;
         }
 
-        .disclaimer {
-            font-size: 0.85rem;
-            color: #777;
+        footer {
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            border-top: 1px solid #ddd;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            padding: 30px 20px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
         }
 
         @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-            .form-card {
-                padding: 20px 15px;
-            }
+            .hero h1 { font-size: 1.6rem; }
+            .trust-grid { grid-template-columns: 1fr 1fr 1fr; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        🔒 100% Confidential & Secret Delivery
-    </header>
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        🔒 100% Confidential Packing | Cash On Delivery Available
+    </div>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Apni Energy Aur Confidence Ko Dobara Paayein</h1>
-        <p>Natural remedies aur sahi lifestyle habits ke saath male wellness ko restore karein.</p>
+        <h1>Puraane Se Puraani Kamzori Aur Fatigue Ko Sahi Karein!</h1>
+        <p>100% Ayurvedic, Certified aur Safe Tarike Se Apni Energy, Strength aur Confidence Ko Wapas Paayein.</p>
     </section>
 
     <div class="container">
 
-        <!-- Banner Image Placeholder -->
-        <div class="image-container">
-            <img src="https://via.placeholder.com/700x350?text=Male+Wellness+%26+Vitality" alt="Male Wellness">
+        <!-- Trust Badges Grid -->
+        <div class="trust-grid">
+            <div class="trust-item">
+                <span>🏛️</span>
+                AYUSH Approved
+            </div>
+            <div class="trust-item">
+                <span>📜</span>
+                ISO Certified
+            </div>
+            <div class="trust-item">
+                <span>🌿</span>
+                100% Herbal
+            </div>
         </div>
 
-        <div class="features">
-            <h2>Kyun Zaroori Hai Sahi Wellness Support?</h2>
-            <ul class="feature-list">
-                <li>Daily Energy aur Active Performance badhayein</li>
-                <li>Stress aur Fatigue ko kam karne mein madadgaar</li>
-                <li>100% Herbal & Natural Ingredients</li>
-                <li>Koi harmful chemicals ya side effects nahi</li>
+        <!-- Banner Image Placeholder -->
+        <div class="img-card">
+            <img src="https://via.placeholder.com/700x350?text=Govt.+Approved+Male+Wellness+Formula" alt="Product Banner">
+        </div>
+
+        <!-- Detail Section 1: Kaisi Dawai Hai -->
+        <div class="card">
+            <h2>Ye Kaisi Dawai Hai Aur Kaise Kaam Karti Hai?</h2>
+            <p>Ye koi chemical-based instant capsule nahi hai jisse side effects hon. Ye ek **Puratan Ayurvedic Formula** hai jo aapke sharir ke andar blood circulation ko improve karta hai, testosterone level ko natural tarike se boost karta hai aur daily energy ko double karta hai.</p>
+        </div>
+
+        <!-- Detail Section 2: Ingredients / Jadi-Butiyan -->
+        <div class="card">
+            <h2>Isme Kaun-Kaun Se Asli Ingredients Hain?</h2>
+            <ul class="check-list">
+                <li><strong>Shuddha Shilajit:</strong> Natural Stamina aur Energy badhane ke liye.</li>
+                <li><strong>Ashwagandha:</strong> Stress aur Thakan ko door karke strength build karta hai.</li>
+                <li><strong>Safed Musli:</strong> Vitality aur Physical Health ko improve karta hai.</li>
+                <li><strong>Gokshura:</strong> Natural Male Hormones ko balance karta hai.</li>
+                <li><strong>Shatavari & Swarna Bhasma:</strong> Sharir ko ander se majboot banata hai.</li>
             </ul>
         </div>
 
-        <!-- FORM SECTION -->
-        <div class="form-card" id="order-form">
-            <h2>Special Offer Ke Liye Details Bharein</h2>
-            <p>Apna Naam aur Number dalein, humari team aapko call karke guide karegi.</p>
+        <!-- Detail Section 3: Kitne Din Mein Result Dikhata Hai -->
+        <div class="card">
+            <h2>Kaise Dikhata Hai Iska Result? (3-Step Action)</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Pehle 7 Se 10 Din:</h4>
+                    <p>Subah ki thakan aur dinbhar ka stress kam hone lagta hai. Energy level mein farak mehsus hota hai.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>15 Se 20 Din Mein:</h4>
+                    <p>Blood circulation improve hota hai, stamina aur body ki overall strength mein strong improvement dikhta hai.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>30 Din Ka Poora Course:</h4>
+                    <p>Natural confidence, energy, aur vitality restore ho jati hai. Long-lasting results milte hain.</p>
+                </div>
+            </div>
+        </div>
 
-            <!-- Action URL change karein (e.g., Google Sheet Script, Webhook, ya CRM Link) -->
+        <!-- Detail Section 4: Safety & Certification -->
+        <div class="card">
+            <h2>100% Certified Aur Safe Kyun Hai?</h2>
+            <ul class="check-list">
+                <li>GMP (Good Manufacturing Practice) Certified Lab mein taiyar.</li>
+                <li>Koi bhi harmful chemicals ya steroids nahi hain.</li>
+                <li>Sugar, BP ya Normal Age wale log bhi bina kisi side effect ke use kar sakte hain.</li>
+                <li>Discrete Delivery: Packing ke upar kisi product ka naam nahi hota (100% Secret Box).</li>
+            </ul>
+        </div>
+
+        <!-- Order / Lead Form Section -->
+        <div class="form-card" id="order-form">
+            <h2>Special Discount Ke Liye Form Bharein</h2>
+            <p>Apna Sahi Naam aur WhatsApp Mobile Number Dalein. Humari Health Expert Team Aapko Free Call Karke Full Details Degi.</p>
+
             <form action="#" method="POST">
                 <div class="form-group">
                     <label for="name">Aapka Poora Naam (Full Name):</label>
-                    <input type="text" id="name" name="name" placeholder="Apna naam likhein" required>
+                    <input type="text" id="name" name="name" placeholder="Yahan apna naam likhein" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Mobile Number (WhatsApp Number):</label>
-                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 अंकों का मोबाइल नंबर" required>
+                    <label for="phone">Mobile Number (WhatsApp):</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 Digit Mobile Number" required>
                 </div>
 
-                <button type="submit" class="cta-btn">Kall Back Ya Order Book Karein →</button>
+                <div class="form-group">
+                    <label for="city">Aapka Shahar / City Name:</label>
+                    <input type="text" id="city" name="city" placeholder="Apne shahar ka naam likhein" required>
+                </div>
+
+                <button type="submit" class="submit-btn">FREE Call Back & Order Book Karein →</button>
             </form>
 
-            <div class="badge-container">
-                <span>📦 Discrete Packing</span>
-                <span>🚚 Fast Delivery</span>
-                <span>📞 Confidential Call</span>
+            <div class="delivery-info">
+                🚚 Free Home Delivery | 📦 Secret & Discreet Packing | 💵 Cash On Delivery
             </div>
         </div>
 
     </div>
 
-    <footer class="disclaimer">
-        <p><strong>Disclaimer:</strong> Ye product kisi bimari ko cure karne ka claim nahi karta. Results har vyakti ke sharir aur lifestyle ke hisab se alag ho sakte hain.</p>
+    <footer>
+        <p><strong>Disclaimer:</strong> Individual results may vary based on lifestyle, age, and health conditions. This product is a dietary supplement and not intended to diagnose, treat, or cure any major illness.</p>
     </footer>
 
 </body>
