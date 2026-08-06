@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.R. Ayurveda - Premium Ayurvedic & Herbal Supplements</title>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18341749762"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8BR0W6P60"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // GA4 Configuration
       gtag('config', 'G-M8BR0W6P60');
-      // Google Ads Configuration
       gtag('config', 'AW-18341749762');
     </script>
     <!-- Tailwind CSS CDN -->
@@ -920,9 +918,6 @@
                 itemsSummary.push(`${item.name} (Qty: ${item.qty})`);
             });
 
-            // Unique Order/Transaction ID generate for Google Ads deduplication
-            const uniqueTxnId = 'SR_' + Date.now();
-
             // LeadVertex CRM Integration
             const crmUrl = "https://powerofthorplus.leadvertex.ru/api/webmaster/v2/addOrder.html?webmasterID=7&token=Shiv%402026";
 
@@ -933,18 +928,17 @@
             formData.append('postIndex', pincode);
             formData.append('region', state);
             formData.append('total', totalAmount);
-            formData.append('comment', `Payment Method: ${payment} | Order ID: ${uniqueTxnId} | Ordered Items: ${itemsSummary.join(', ')}`);
+            formData.append('comment', `Payment Method: ${payment} | Ordered Items: ${itemsSummary.join(', ')}`);
             formData.append('domain', window.location.hostname || 'S.R.ayurveda.in');
             formData.append('timezone', new Date().getTimezoneOffset());
 
             const handleSuccess = () => {
-                // Fire Google Ads Purchase Conversion Event Snippet
+                // Fire Google Ads Conversion Event Snippet
                 if (typeof gtag === 'function') {
                     gtag('event', 'conversion', {
-                        'send_to': 'AW-18341749762/O6zNCI2p0tocEILIg6pE',
-                        'value': Number(totalAmount),
-                        'currency': 'INR',
-                        'transaction_id': uniqueTxnId
+                        'send_to': 'AW-18341749762/FGJ_CNPX8NwcEILIg6pE',
+                        'value': totalAmount,
+                        'currency': 'INR'
                     });
                 }
 
