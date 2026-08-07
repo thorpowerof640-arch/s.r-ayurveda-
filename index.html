@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.R. Ayurveda - Premium Ayurvedic & Herbal Supplements</title>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8BR0W6P60"></script>
     <script>
@@ -14,6 +15,7 @@
       gtag('config', 'G-M8BR0W6P60');
       gtag('config', 'AW-18341749762');
     </script>
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -294,7 +296,7 @@
                                 <span class="text-xs text-gray-400 line-through">Rs. 4,500.00</span>
                                 <span class="text-lg font-extrabold text-emerald-900">Rs. 2,290.00</span>
                             </div>
-                            <button onclick="event.stopPropagation(); addToCart(3, 'POWER OF THOR CAPSULES', 2250)" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                            <button onclick="event.stopPropagation(); addToCart(3, 'POWER OF THOR CAPSULES', 2290)" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -316,7 +318,7 @@
                                 <span class="text-xs text-gray-400 line-through">Rs. 4,500.00</span>
                                 <span class="text-lg font-extrabold text-emerald-900">Rs. 2,290.00</span>
                             </div>
-                            <button onclick="event.stopPropagation(); addToCart(4, 'POWER OF THOR RED CAPSULE', 2250)" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
+                            <button onclick="event.stopPropagation(); addToCart(4, 'POWER OF THOR RED CAPSULE', 2290)" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 rounded-lg text-sm transition">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -466,7 +468,7 @@
             <div class="space-y-4">
                 <div class="bg-white p-5 rounded-lg border border-gray-200">
                     <h3 class="font-bold text-sm text-gray-900">What is S.R. Ayurveda?</h3>
-                    <p class="text-xs text-gray-600 mt-2">S.R. Ayurveda (S.R.ayurveda.com) is a trusted store offering 100% natural and authentic Ayurvedic supplements for various health and fitness needs.</p>
+                    <p class="text-xs text-gray-600 mt-2">S.R. Ayurveda (S.R.ayurveda.in) is a trusted store offering 100% natural and authentic Ayurvedic supplements for various health and fitness needs.</p>
                 </div>
                 <div class="bg-white p-5 rounded-lg border border-gray-200">
                     <h3 class="font-bold text-sm text-gray-900">Are S.R. Ayurveda products safe?</h3>
@@ -529,7 +531,7 @@
         </div>
 
         <div class="container mx-auto px-4 mt-10 pt-6 border-t border-emerald-900 text-center text-xs text-gray-500">
-            © 2026 S.R. Ayurveda (S.R.ayurveda.com). All Rights Reserved. Powered by S.R. Ayurveda Go India LLP.
+            © 2026 S.R. Ayurveda (S.R.ayurveda.in). All Rights Reserved. Powered by S.R. Ayurveda Go India LLP.
         </div>
     </footer>
 
@@ -894,7 +896,7 @@
             }, 300);
         }
 
-        // INTEGRATED CRM ORDER SUBMISSION FUNCTION WITH GOOGLE CONVERSION TRACKING
+        // INTEGRATED CRM ORDER SUBMISSION FUNCTION WITH UPDATED GOOGLE CONVERSION TRACKING
         function submitOrder(e) {
             e.preventDefault();
             
@@ -918,6 +920,9 @@
                 itemsSummary.push(`${item.name} (Qty: ${item.qty})`);
             });
 
+            // Generate unique Order/Transaction ID
+            const orderId = 'ORD-' + Date.now();
+
             // LeadVertex CRM Integration
             const crmUrl = "https://powerofthorplus.leadvertex.ru/api/webmaster/v2/addOrder.html?webmasterID=7&token=Shiv%402026";
 
@@ -928,17 +933,23 @@
             formData.append('postIndex', pincode);
             formData.append('region', state);
             formData.append('total', totalAmount);
-            formData.append('comment', `Payment Method: ${payment} | Ordered Items: ${itemsSummary.join(', ')}`);
+            formData.append('comment', `Order ID: ${orderId} | Payment Method: ${payment} | Ordered Items: ${itemsSummary.join(', ')}`);
             formData.append('domain', window.location.hostname || 'S.R.ayurveda.in');
             formData.append('timezone', new Date().getTimezoneOffset());
 
+            let isHandled = false;
+
             const handleSuccess = () => {
-                // Fire Google Ads Conversion Event Snippet
+                if (isHandled) return;
+                isHandled = true;
+
+                // Fire Google Ads Purchase Conversion Event Snippet
                 if (typeof gtag === 'function') {
                     gtag('event', 'conversion', {
                         'send_to': 'AW-18341749762/FGJ_CNPX8NwcEILIg6pE',
-                        'value': totalAmount,
-                        'currency': 'INR'
+                        'value': parseFloat(totalAmount),
+                        'currency': 'INR',
+                        'transaction_id': orderId
                     });
                 }
 
@@ -953,6 +964,7 @@
                 showThankYouModal();
             };
 
+            // Fetch request with fallback to avoid conversion block
             fetch(crmUrl, {
                 method: 'POST',
                 headers: {
@@ -966,8 +978,13 @@
             })
             .catch(error => {
                 console.error('CRM Error:', error);
-                handleSuccess();
+                handleSuccess(); // Direct tracking trigger even if CRM call fails
             });
+
+            // Safety timeout (if network hangs)
+            setTimeout(() => {
+                handleSuccess();
+            }, 3000);
         }
 
         // MODAL FUNCTIONS
