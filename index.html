@@ -1066,7 +1066,7 @@
             const qtyInput = document.getElementById(`modal-qty-${id}`);
             const qty = parseInt(qtyInput.value) || 1;
             const prod = productsDB[id];
-            addToCart(prod.id, prod.name, prod.price, qty);
+            addToCart(prod.id, prod.price, qty);
             closeProductModal();
         }
 
