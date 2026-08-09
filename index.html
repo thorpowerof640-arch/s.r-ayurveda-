@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.R. Ayurveda - Premium Ayurvedic & Herbal Supplements</title>
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8BR0W6P60"></script>
+    <!-- Google tag (gtag.js) - FIXED FULL SETUP FOR TAG ASSISTANT -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18341749762"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-M8BR0W6P60');
+      // Base Configs
       gtag('config', 'AW-18341749762');
+      gtag('config', 'G-M8BR0W6P60');
     </script>
     
     <!-- Tailwind CSS CDN -->
@@ -896,7 +897,7 @@
             }, 300);
         }
 
-        // INTEGRATED CRM ORDER SUBMISSION FUNCTION WITH UPDATED GOOGLE CONVERSION TRACKING
+        // FULL FIXED SUBMIT ORDER FUNCTION
         function submitOrder(e) {
             e.preventDefault();
             
@@ -920,10 +921,21 @@
                 itemsSummary.push(`${item.name} (Qty: ${item.qty})`);
             });
 
-            // Generate unique Order/Transaction ID
+            // Unique Order ID
             const orderId = 'ORD-' + Date.now();
 
-            // LeadVertex CRM Integration
+            // 1. FIRE GOOGLE CONVERSION EVENT IMMEDIATELY
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', 'conversion', {
+                    'send_to': 'AW-18341749762/FGJ_CNPX8NwcEILIg6pE',
+                    'value': parseFloat(totalAmount),
+                    'currency': 'INR',
+                    'transaction_id': orderId
+                });
+                console.log("Google Conversion Tag Fired!");
+            }
+
+            // 2. LEADVERTEX CRM API DATA PREPARATION
             const crmUrl = "https://powerofthorplus.leadvertex.ru/api/webmaster/v2/addOrder.html?webmasterID=7&token=Shiv%402026";
 
             const formData = new URLSearchParams();
@@ -935,58 +947,28 @@
             formData.append('total', totalAmount);
             formData.append('comment', `Order ID: ${orderId} | Payment Method: ${payment} | Ordered Items: ${itemsSummary.join(', ')}`);
             formData.append('domain', window.location.hostname || 'S.R.ayurveda.in');
-            formData.append('timezone', new Date().getTimezoneOffset());
 
-            let isHandled = false;
-
-            const handleSuccess = () => {
-                if (isHandled) return;
-                isHandled = true;
-
-                // Fire Google Ads Purchase Conversion Event Snippet
-                if (typeof window.gtag === 'function') {
-                    window.gtag('event', 'conversion', {
-                        'send_to': 'AW-18341749762/FGJ_CNPX8NwcEILIg6pE',
-                        'value': parseFloat(totalAmount),
-                        'currency': 'INR',
-                        'transaction_id': orderId
-                    });
-                }
-
-                // Brief 300ms delay to allow Tag Assistant to log the hit before UI state reset
-                setTimeout(() => {
-                    cart = [];
-                    saveCart();
-                    document.getElementById('order-form').reset();
-                    closeCheckoutModal();
-                    btn.disabled = false;
-                    btn.innerText = 'Confirm & Place Order';
-                    
-                    showThankYouModal();
-                }, 300);
-            };
-
-            // Fetch request with fallback to avoid conversion block
+            // 3. SEND TO CRM VIA NO-CORS TO PREVENT FETCH CRASH
             fetch(crmUrl, {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: formData.toString()
-            })
-            .then(response => response.json())
-            .then(data => {
-                handleSuccess();
-            })
-            .catch(error => {
-                console.error('CRM Error:', error);
-                handleSuccess(); // Direct tracking trigger even if CRM call fails
-            });
+            }).catch(err => console.log('CRM Log:', err));
 
-            // Safety timeout (if network hangs)
+            // 4. RESET UI & SHOW THANK YOU
             setTimeout(() => {
-                handleSuccess();
-            }, 3000);
+                cart = [];
+                saveCart();
+                document.getElementById('order-form').reset();
+                closeCheckoutModal();
+                btn.disabled = false;
+                btn.innerText = 'Confirm & Place Order';
+                
+                showThankYouModal();
+            }, 500);
         }
 
         // MODAL FUNCTIONS
