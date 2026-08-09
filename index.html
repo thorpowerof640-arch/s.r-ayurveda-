@@ -666,7 +666,7 @@
                 image: "arthra-fix.jpg",
                 pageUrl: "product.html",
                 tagline: "Herbal joint pain relief gel for fast recovery and arthritis care.",
-                description: "Arthra Fix ek vishesh Ayurvedic gel hai jo jodon ke dard, ghutno ke dard, arthritis, sujan aur muscle stiffness se turant rahat dilata hai. Iska herbal formula twacha me gehrai tak absorbing karke dard ko jad se kam karta hai.",
+                description: "Arthra Fix ek vishesh Ayurvedic gel hai jo jodon ke dard, ghutno ke dard, arthritis, sujan aur muscle stiffness se turant राहत dilata hai. Iska herbal formula twacha me gehrai tak absorbing karke dard ko jad se kam karta hai.",
                 benefits: [
                     "Ghutne, peeth aur jodon ke dard se turant rahat",
                     "Sujan aur stiffness (jakdan) ko kam kare",
@@ -725,10 +725,10 @@
                 tagline: "For Sugar Control & Diabetic Relief+",
                 description: "Insul-x Gold S.R. Ayurveda ka sabse powerful aur advance formulation hai. Isme Gymnema Sylvestre, Jamun Seed aur Ayurvedic Herbs ki highest concentration hai jo blood sugar levels ko natural tarike se manage karne me madad karta hai.",
                 benefits: [
-               "Effective Blood Sugar & Glucose Control Support",
-               "Helps Improve Natural Insulin Sensitivity",
-               "Enriched with 100% Pure Natural Herbs",
-               "100% Pure, ISO 9001:2015 & GMP Certified"
+                   "Effective Blood Sugar & Glucose Control Support",
+                   "Helps Improve Natural Insulin Sensitivity",
+                   "Enriched with 100% Pure Natural Herbs",
+                   "100% Pure, ISO 9001:2015 & GMP Certified"
                 ],
                 usage: "Take 2 capsules daily or as suggested by your doctor.",
                 ingredients: "Gymnema Sylvestre, Syzygium cuminii, Emblica Officinalis, Withania Somnifera, Ocimum sanctum, Withania Coagulans, Piper Longum, Momordica Charantia, Trigonella, Zingiber officinale, Cinnamomum zeylanicum."
@@ -756,7 +756,7 @@
             if (existingItem) {
                 existingItem.qty += qty;
             } else {
-                cart.push({ id: id || Date.now(), name, price, qty });
+                cart.push({ id: id || Date.now(), name: name, price: price, qty: qty });
             }
             
             saveCart();
@@ -944,8 +944,8 @@
                 isHandled = true;
 
                 // Fire Google Ads Purchase Conversion Event Snippet
-                if (typeof gtag === 'function') {
-                    gtag('event', 'conversion', {
+                if (typeof window.gtag === 'function') {
+                    window.gtag('event', 'conversion', {
                         'send_to': 'AW-18341749762/FGJ_CNPX8NwcEILIg6pE',
                         'value': parseFloat(totalAmount),
                         'currency': 'INR',
@@ -953,15 +953,17 @@
                     });
                 }
 
-                // Clear Cart, Reset Form & Show Thank You Screen
-                cart = [];
-                saveCart();
-                document.getElementById('order-form').reset();
-                closeCheckoutModal();
-                btn.disabled = false;
-                btn.innerText = 'Confirm & Place Order';
-                
-                showThankYouModal();
+                // Brief 300ms delay to allow Tag Assistant to log the hit before UI state reset
+                setTimeout(() => {
+                    cart = [];
+                    saveCart();
+                    document.getElementById('order-form').reset();
+                    closeCheckoutModal();
+                    btn.disabled = false;
+                    btn.innerText = 'Confirm & Place Order';
+                    
+                    showThankYouModal();
+                }, 300);
             };
 
             // Fetch request with fallback to avoid conversion block
@@ -1066,7 +1068,7 @@
             const qtyInput = document.getElementById(`modal-qty-${id}`);
             const qty = parseInt(qtyInput.value) || 1;
             const prod = productsDB[id];
-            addToCart(prod.id, prod.price, qty);
+            addToCart(prod.id, prod.name, prod.price, qty);
             closeProductModal();
         }
 
