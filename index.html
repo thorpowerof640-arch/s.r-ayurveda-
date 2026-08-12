@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.R. Ayurveda - Premium Ayurvedic & Herbal Supplements</title>
     
-    <!-- Google tag (gtag.js) - FIXED FULL SETUP FOR TAG ASSISTANT -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18341749762"></script>
+    <!-- Google tag (gtag.js) - Exact snippet matching screenshot -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8BR0W6P60"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // Base Configs
-      gtag('config', 'AW-18341749762');
+      // Base Configs for Analytics & Google Ads
       gtag('config', 'G-M8BR0W6P60');
+      gtag('config', 'AW-18341749762');
     </script>
     
     <!-- Tailwind CSS CDN -->
@@ -618,7 +618,7 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Smooth Full Background Slider Switcher (4 Seconds Transition)
+        // Smooth Full Background Slider Switcher
         let currentBgSlide = 0;
         function autoBgSlide() {
             const bgSlides = document.querySelectorAll('.bg-slide-item');
@@ -897,7 +897,7 @@
             }, 300);
         }
 
-        // FULL FIXED SUBMIT ORDER FUNCTION
+        // SUBMIT ORDER FUNCTION
         function submitOrder(e) {
             e.preventDefault();
             
@@ -921,7 +921,6 @@
                 totalAmount += itemTotal;
                 itemsSummary.push(`${item.name} (Qty: ${item.qty})`);
 
-                // Formatted items array for Google Ads E-commerce Conversion
                 googleItemsArray.push({
                     'id': item.id ? String(item.id) : item.name,
                     'name': item.name,
@@ -930,10 +929,9 @@
                 });
             });
 
-            // Unique Order ID
             const orderId = 'ORD-' + Date.now();
 
-            // 1. FIRE GOOGLE CONVERSION EVENT WITH FULL PRODUCT DETAILS
+            // 1. FIRE GOOGLE CONVERSION EVENT
             if (typeof window.gtag === 'function') {
                 window.gtag('event', 'conversion', {
                     'send_to': 'AW-18341749762/FGJ_CNPX8NwcEILIg6pE',
@@ -942,7 +940,7 @@
                     'transaction_id': orderId,
                     'items': googleItemsArray
                 });
-                console.log("Google Conversion Tag Fired with Product Items!", googleItemsArray);
+                console.log("Google Conversion Event Fired!", googleItemsArray);
             }
 
             // 2. LEADVERTEX CRM API DATA PREPARATION
@@ -958,7 +956,7 @@
             formData.append('comment', `Order ID: ${orderId} | Payment Method: ${payment} | Ordered Items: ${itemsSummary.join(', ')}`);
             formData.append('domain', window.location.hostname || 'S.R.ayurveda.in');
 
-            // 3. SEND TO CRM VIA NO-CORS TO PREVENT FETCH CRASH
+            // 3. SEND TO CRM VIA NO-CORS
             fetch(crmUrl, {
                 method: 'POST',
                 mode: 'no-cors',
