@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.R. Ayurveda - Premium Ayurvedic & Herbal Supplements</title>
     
-    <!-- Google tag (gtag.js) - FIXED FULL SETUP FOR TAG ASSISTANT & GOOGLE ADS -->
+    <!-- Google tag (gtag.js) - FIXED FULL SETUP FOR TAG ASSISTANT -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18341749762"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -913,40 +913,36 @@
             const payment = document.getElementById('cust-payment').value;
 
             let itemsSummary = [];
+            let googleItemsArray = [];
             let totalAmount = 0;
             
             cart.forEach(item => {
                 let itemTotal = item.price * item.qty;
                 totalAmount += itemTotal;
                 itemsSummary.push(`${item.name} (Qty: ${item.qty})`);
+
+                // Formatted items array for Google Ads E-commerce Conversion
+                googleItemsArray.push({
+                    'id': item.id ? String(item.id) : item.name,
+                    'name': item.name,
+                    'price': parseFloat(item.price),
+                    'quantity': parseInt(item.qty)
+                });
             });
 
             // Unique Order ID
             const orderId = 'ORD-' + Date.now();
 
-            // 1. FIRE GOOGLE ADS CONVERSION & GA4 PURCHASE EVENTS
+            // 1. FIRE GOOGLE CONVERSION EVENT WITH FULL PRODUCT DETAILS
             if (typeof window.gtag === 'function') {
-                // Primary Conversion Action Event (Google Ads)
                 window.gtag('event', 'conversion', {
                     'send_to': 'AW-18341749762/FGJ_CNPX8NwcEILIg6pE',
                     'value': parseFloat(totalAmount),
                     'currency': 'INR',
-                    'transaction_id': orderId
-                });
-
-                // Standard Purchase Event (GA4 & Google Ads Dual-Tracking)
-                window.gtag('event', 'purchase', {
                     'transaction_id': orderId,
-                    'value': parseFloat(totalAmount),
-                    'currency': 'INR',
-                    'items': cart.map(item => ({
-                        'item_name': item.name,
-                        'price': item.price,
-                        'quantity': item.qty
-                    }))
+                    'items': googleItemsArray
                 });
-
-                console.log("Google Conversion & Purchase Event Successfully Fired!");
+                console.log("Google Conversion Tag Fired with Product Items!", googleItemsArray);
             }
 
             // 2. LEADVERTEX CRM API DATA PREPARATION
@@ -972,7 +968,7 @@
                 body: formData.toString()
             }).catch(err => console.log('CRM Log:', err));
 
-            // 4. RESET UI & SHOW THANK YOU (Slight Delay to ensure Tag Dispatch)
+            // 4. RESET UI & SHOW THANK YOU
             setTimeout(() => {
                 cart = [];
                 saveCart();
@@ -982,7 +978,7 @@
                 btn.innerText = 'Confirm & Place Order';
                 
                 showThankYouModal();
-            }, 600);
+            }, 500);
         }
 
         // MODAL FUNCTIONS
