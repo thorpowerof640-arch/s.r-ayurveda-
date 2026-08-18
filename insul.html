@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SR Ayurveda Insul-X Gold - Sugar Control & Wellness</title>
+    <style>
+        :root {
+            --primary: #1b5e20;
+            --primary-light: #4caf50;
+            --secondary: #f57c00;
+            --accent-gold: #ffb300;
+            --dark: #212121;
+            --light: #f8f9fa;
+            --gray: #616161;
+            --border: #e0e0e0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f4f7f4;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .top-bar {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .badge-header {
+            background: #e8f5e9;
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #c8e6c9;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .hero-image-box {
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-image {
+            max-width: 100%;
+            max-height: 420px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            object-fit: contain;
+        }
+        
+        .cert-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .cert-badge {
+            background: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--primary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            border: 1px solid #c8e6c9;
+        }
+        
+        .hero-text h1 {
+            font-size: 32px;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        
+        .hero-text .subtitle {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .points-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .points-list li {
+            margin-bottom: 10px;
+            padding-left: 28px;
+            position: relative;
+            font-size: 16px;
+        }
+        
+        .points-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-light);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .price-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px dashed var(--primary-light);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .price-tag {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 18px;
+            margin-left: 10px;
+        }
+        
+        .cta-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(to bottom, #f57c00, #e65100);
+            color: white;
+            text-align: center;
+            padding: 16px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(245, 124, 0, 0.4);
+            transition: transform 0.2s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Ingredients Section */
+        .section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        
+        .ing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .ing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .facts-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .facts-table th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+        
+        .facts-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+        
+        .facts-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        /* How it works */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            text-align: center;
+        }
+        
+        .benefit-card h3 {
+            color: var(--primary);
+            margin: 15px 0 10px 0;
+        }
+        
+        /* Customer Reviews */
+        .reviews-section {
+            background: #e8f5e9;
+            padding: 50px 0;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .review-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .stars {
+            color: #ffc107;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .reviewer {
+            font-weight: bold;
+            margin-top: 15px;
+            color: var(--primary);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .verified {
+            color: #2e7d32;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        
+        /* Order Form */
+        .form-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid var(--border);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        /* Disclaimer Footer */
+        footer {
+            background: #1e272e;
+            color: #d2dae2;
+            padding: 40px 0 20px 0;
+            font-size: 13px;
+        }
+        
+        .disclaimer {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary);
+            line-height: 1.5;
+        }
+
+        .image-placeholder {
+            border: 2px dashed #a5d6a7;
+            background: #f1f8e9;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 15px;
+            color: #33691e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        ⚡ SPECIAL OFFER: Aaj Order Karne Par COD (Cash on Delivery) Aur Free Shipping Uplabdh!
+    </div>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">SR <span>AYURVEDA</span></div>
+            <div class="badge-header">100% Herbal & ISO-GMP Certified</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-image-box">
+                <img src="" alt="Insul-X Gold Bottle" class="hero-image">
+                <div class="cert-badges">
+                    <span class="cert-badge">GMP Certified</span>
+                    <span class="cert-badge">100% Natural</span>
+                    <span class="cert-badge">ISO 9001:2015</span>
+                </div>
+            </div>
+            <div class="hero-text">
+                <h1>SR Ayurveda Insul-X Gold (800mg)</h1>
+                <p class="subtitle">Ayurvedic Formulation For Sugar Control & Overall Wellness</p>
+                
+                <ul class="points-list">
+                    <li><b>Natural Blood Sugar Support:</b> Metabolism ko natural tarike se maintain karne mein sahayak.</li>
+                    <li><b>Pure Herbal Ingredients:</b> Gurmar (Gymnema), Jamun, Amla, Shilajit aur Ashwagandha ka shreshth mishran.</li>
+                    <li><b>Energy & Vitality:</b> Din bhar ki thakan aur kamzori ko dur rakhne mein madadgar.</li>
+                    <li><b>No Side Effects:</b> Toxins-free, 100% Ayurvedic Dietary Supplement.</li>
+                </ul>
+
+                <div class="price-box">
+                    <div>
+                        <span style="font-size:14px; color:var(--gray);">Special Offer Price:</span><br>
+                        <span class="price-tag">₹1,299</span>
+                        <span class="old-price">₹2,499</span>
+                    </div>
+                    <span style="background:#e8f5e9; color:var(--primary); padding:5px 10px; border-radius:5px; font-weight:bold; font-size:14px;">48% OFF</span>
+                </div>
+
+                <a href="#order-form" class="cta-btn">CASH ON DELIVERY ORDER KAREIN ➔</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details & Facts Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Supplement Facts & Authentic Ingredients</h2>
+            <p class="section-subtitle">Har capsule mein 800mg ki shuddh Ayurvedic pramanit aushadhiyan shamil hain</p>
+
+            <div class="ing-grid">
+                <div>
+                    <img src="" alt="Insul-X Gold Supplement Facts Label" style="width:100%; max-width:450px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); display:block; margin:0 auto;">
+                </div>
+                <div>
+                    <table class="facts-table">
+                        <thead>
+                            <tr>
+                                <th>Botanical Ingredient</th>
+                                <th>Quantity (per cap)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Gymnema Sylvestre (Gurmar)</td><td>180 mg</td></tr>
+                            <tr><td>Syzygium Cuminii (Jamun)</td><td>150 mg</td></tr>
+                            <tr><td>Emblica Officinalis (Amla)</td><td>60 mg</td></tr>
+                            <tr><td>Withania Somnifera (Ashwagandha)</td><td>40 mg</td></tr>
+                            <tr><td>Ocimum Sanctum (Tulsi)</td><td>30 mg</td></tr>
+                            <tr><td>Withania Coagulans (Paneer Dodi)</td><td>25 mg</td></tr>
+                            <tr><td>Piper Longum (Pippali)</td><td>20 mg</td></tr>
+                            <tr><td>Momordica Charantia (Karela)</td><td>20 mg</td></tr>
+                            <tr><td>Trigonella (Methi)</td><td>20 mg</td></tr>
+                            <tr><td>Zingiber Officinale (Saunth)</td><td>20 mg</td></tr>
+                            <tr><td>Cinnamomum Zeylanicum (Dalchini)</td><td>15 mg</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Benefits -->
+    <section class="section" style="background:#ffffff;">
+        <div class="container">
+            <h2 class="section-title">Insul-X Gold Ke Pramukh Fayde</h2>
+            <p class="section-subtitle">Aapki swasth dainik dincharya aur glucose balance ke liye ek sampurna aushadhi</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>🌾 Natural Metabolism</h3>
+                    <p>Pancreas aur body ke natural insulin response ko herbal tarike se support karta hai.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>⚡ Constant Energy</h3>
+                    <p>Sugar level fluctuations ke karan hone wali sustain thakan ko kam karke taazgi deta hai.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🍃 Pure & Safe</h3>
+                    <p>ISO aur GMP certified lab mein tayar, bina kisi harmful chemical ya steroid ke.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews / Results Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Hamare Grahako Ke Anubhav (Customer Reviews)</h2>
+            <p class="section-subtitle">Hazaaro logon ne Insul-X Gold ko apni daily routine ka hissa banaya hai</p>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Main pichle 2 mahine se Insul-X Gold le raha hu. Meri body mein sthirta aayi hai aur daily energy levels kafi behtar hue hain."</p>
+                    <div class="reviewer">
+                        <span>Ramesh Sharma (Delhi)</span>
+                        <span class="verified">✓ Verified Buyer</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Ayurvedic hone ki wajah se koi side effect nahi hai. Supplement facts label clear hai jisse pata chalta hai ki hum kya le rahe hain."</p>
+                    <div class="reviewer">
+                        <span>Sunita Verma (Jaipur)</span>
+                        <span class="verified">✓ Verified Buyer</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Delivery 3 din mein mil gayi. Product packaging original hai. Cash on Delivery ka option bahut achha laga."</p>
+                    <div class="reviewer">
+                        <span>Vikram Patel (Ahmedabad)</span>
+                        <span class="verified">✓ Verified Buyer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Placeholder Section for User's Additional Images / Result Screenshots -->
+            <div class="image-placeholder">
+                <h3>📷 Customer Result / Before-After Section</h3>
+                <p>Aap yahan apne customer results aur lab test screenshots ki images replace kar sakte hain.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usage & Dosage -->
+    <section class="section">
+        <div class="container" style="text-align:center; max-width:800px;">
+            <h2 class="section-title">Kaise Upayog Karein? (Suggested Usage)</h2>
+            <p style="font-size:18px; margin-top:15px;">
+                Rozana <b>2 Capsules</b> lein (ek subah aur ek shaam ko khane ke baad), ya apne chikitsak (Doctor/Ayurvedic practitioner) ke nirdeshanusar lein.
+            </p>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="section" id="order-form" style="background:#e8f5e9;">
+        <div class="container">
+            <div class="form-section">
+                <h2 style="text-align:center; color:var(--primary); margin-bottom:10px;">Book Your Order Now</h2>
+                <p style="text-align:center; color:var(--gray); margin-bottom:25px;">Niche diya gaya form bharein, Cash on Delivery uplabdh hai.</p>
+
+                <form onsubmit="alert('Aapka Order successfully register ho gaya hai!'); return false;">
+                    <div class="form-group">
+                        <label>Aapka Poora Naam (Full Name):</label>
+                        <input type="text" required placeholder="Ex. Rahul Kumar">
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number:</label>
+                        <input type="tel" required placeholder="Ex. 9876543210">
+                    </div>
+                    <div class="form-group">
+                        <label>Poora Pata (Full Address):</label>
+                        <textarea rows="3" required placeholder="Ghar ka no., Gali, Area, Landmark..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>City & Pincode:</label>
+                        <input type="text" required placeholder="Ex. New Delhi - 110001">
+                    </div>
+                    <div class="form-group">
+                        <label>Pack Select Karein:</label>
+                        <select>
+                            <option>1 Bottle (30 Capsules) - ₹1,299</option>
+                            <option selected>2 Bottles (60 Capsules) - ₹2,199 (Popular Choice)</option>
+                            <option>3 Bottles (90 Capsules) - ₹2,999 (Best Value)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="cta-btn">CONFIRM ORDER (CASH ON DELIVERY)</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Network Policy Compliant Footer & Legal Disclaimers -->
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <strong>Important Legal & Health Disclaimer (Compliance Notice):</strong><br>
+                This product (SR Ayurveda Insul-X Gold) is a dietary supplement and is NOT intended to diagnose, treat, cure, or prevent any disease. Results may vary from person to person depending on age, lifestyle, metabolic rate, and health status. Information provided on this page is for educational purposes only and should not replace professional medical advice. People with known medical conditions or taking prescription medications must consult their physician before using this product. Keep out of reach of children. Store in a cool and dry place away from direct sunlight.
+            </div>
+            
+            <div style="text-align:center; border-top: 1px solid rgba(255,255,255,0.1); padding-top:20px;">
+                <p>&copy; 2026 SR Ayurveda. All Rights Reserved.</p>
+                <p style="margin-top:5px; color:#a4b0be; font-size:12px;">
+                    <a href="#" style="color:#a4b0be; text-decoration:underline;">Privacy Policy</a> | 
+                    <a href="#" style="color:#a4b0be; text-decoration:underline;">Terms of Service</a> | 
+                    <a href="#" style="color:#a4b0be; text-decoration:underline;">Contact Us</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
